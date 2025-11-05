@@ -4,6 +4,10 @@ title: Changelog
 description: "Questa pagina è il mio diario di bordo: mese dopo mese, raccolgo le cose più importanti che faccio, i progetti a cui lavoro, le idee che sviluppo e i traguardi che raggiungo."
 
 logs:
+  - date: Ottobre 2025
+    captions:
+      - "Nuovo progetto <a target='_blank' href='/projects/come-raffreddare-un-rasbperry-pi/' alt='Come raffreddare un Raspberry Pi automaticamente'>Come raffreddare un Raspberry Pi automaticamente</a>. (Weekend project)"
+
   - date: Luglio 2025
     captions:
       - "Nuovo articolo <a target='_blank' href='/posts/gli-slider-odiano-il-cls/' alt='Gli slider odiano il tuo punteggio CLS'>Gli slider odiano il tuo punteggio CLS</a>"

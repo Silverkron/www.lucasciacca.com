@@ -56,11 +56,11 @@ name = "Blog"
 url = "/posts/"
 weight = 2
 
-#[[menu.footer]]
-#identifier = "projects"
-#name = "Progetti"
-#url = "/projects/"
-#weight = 3
+[[menu.footer]]
+identifier = "projects"
+name = "Progetti"
+url = "/projects/"
+weight = 3
 
 [[menu.footer]]
 identifier = "changelog"
