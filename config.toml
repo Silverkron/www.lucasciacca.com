@@ -204,7 +204,7 @@ image_url = "https://via.placeholder.com/800x800"
 #-------------------------------
 # Contact Settings
 [params.contact]
-contact__email = "hello@lucasciacca.com" # Add your form_id
+contact__email = "xvgveggq" # Add your form_id
 
 # NOTE
 # Hilton theme comes with a contact form built-in. You can use this form with Formspree (https://formspree.io/) service and get up to 50 submissions for free. Also, you can easily switch to another service if you want.
