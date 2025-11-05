@@ -1,8 +1,9 @@
 ---
 title: Basic Auth con Cloudflare Worker 
+description: Come aggiungere un Basic Auth senza modificare il codice del proprio sito utilizzando Cloudflare Worker
 date: 2024-12-11 22:01:35 +0300
 subtitle: Worker
-image: '/images/cloudflare-worker-basic-auth/copertina.webp'
+image: '/images/cloudflare-worker-basic-auth/cloudflare-basi-auth.webp'
 ---
 
 Un Cloudflare Worker che implementa l'autenticazione HTTP Basic per proteggere le tue risorse web. Il worker intercetta tutte le richieste in arrivo e richiede l'autenticazione prima di permettere l'accesso alle risorse protette.
