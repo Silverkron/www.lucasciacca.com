@@ -19,7 +19,7 @@
     </div>
   
     <div class="container">
-      <div class="row animate">
+      <div class="row">
         {{ range .Data.Pages }}
           {{ partial "article.html" . }}
         {{ end }}
@@ -48,7 +48,7 @@
 </div>
 <!-- end page-head -->
 
-<div class="container animate">
+<div class="container">
   <div class="row">
     {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts" ) }}
     {{ range $paginator.Pages }}

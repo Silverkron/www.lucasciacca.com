@@ -12,19 +12,19 @@
         {{ if .Params.image }}
             <div class="row">
                 <div class="col col-12">
-                    <div class="page-image animate">
+                    <div class="page-image">
                         <img class="lazy" data-src="{{ .Params.Image | absURL }}" alt="{{ .Title }}">
                     </div>
                 </div>
             </div>
         {{ end }}
 
-        <div class="project-content animate">
+        <div class="project-content">
             {{ .Content }}
         </div>
 
         {{ if .PrevInSection }}
-            <div class="project__nav animate">
+            <div class="project__nav">
                 <a class="project__prev" href="{{ .PrevInSection.Permalink }}">
                     <div class="project__box">
                         <span class="project__nav-info">Next Project <i
