@@ -2,7 +2,7 @@
 .article {
   margin-bottom: 64px;
   will-change: transform;
-  transition: transform .2s ease-in-out;
+  // transition: transform .2s ease-in-out;
 
   &:hover {
     transform: translateY(-4px);
