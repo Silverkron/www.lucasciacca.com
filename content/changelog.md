@@ -4,6 +4,10 @@ title: Changelog
 description: "Questa pagina è il mio diario di bordo: mese dopo mese, raccolgo le cose più importanti che faccio, i progetti a cui lavoro, le idee che sviluppo e i traguardi che raggiungo."
 
 logs:
+  - date: Marzo 2026
+    captions:
+      - "Creato l'articolo <a target='_blank' href='/posts/quali-font-stanno-sabotando-il-tuo-rendering/' alt='Font Impact Overlay: quali font stanno sabotando il tuo rendering?'>Font Impact Overlay: quali font stanno sabotando il tuo rendering?</a>"
+
   - date: Ottobre 2025
     captions:
       - "Nuovo progetto <a target='_blank' href='/projects/come-raffreddare-un-rasbperry-pi/' alt='Come raffreddare un Raspberry Pi automaticamente'>Come raffreddare un Raspberry Pi automaticamente</a>. (Weekend project)"
