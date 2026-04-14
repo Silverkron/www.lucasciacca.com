@@ -4,6 +4,10 @@ title: Changelog
 description: "Questa pagina è il mio diario di bordo: mese dopo mese, raccolgo le cose più importanti che faccio, i progetti a cui lavoro, le idee che sviluppo e i traguardi che raggiungo."
 
 logs:
+  - date: Aprile 2026
+    captions:
+      - "Creato l'articolo <a target='_blank' href='/posts/spec-driven-development/' alt='Spec Driven Development: cos'è, come funziona e perché sta cambiando il modo di sviluppare software con AI'>Spec Driven Development: cos'è, come funziona e perché sta cambiando il modo di sviluppare software con AI</a>"
+
   - date: Marzo 2026
     captions:
       - "Creato l'articolo <a target='_blank' href='/posts/quali-font-stanno-sabotando-il-tuo-rendering/' alt='Font Impact Overlay: quali font stanno sabotando il tuo rendering?'>Font Impact Overlay: quali font stanno sabotando il tuo rendering?</a>"
