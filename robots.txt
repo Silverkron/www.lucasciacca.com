@@ -1,3 +1,0 @@
-User-agent: *
-Disallow:
-Sitemap: https://luca.sciacca.dev/sitemap.xml

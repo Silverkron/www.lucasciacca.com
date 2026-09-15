@@ -1,0 +1,42 @@
+<div class="portfolio" data-portfolio>
+  <section class="container portfolio-work" id="cosa-faccio" aria-labelledby="work-title">
+    <div class="portfolio-heading"><div><p class="eyebrow">SEI MODI DI ESSERE CURIOSO</p><h2 id="work-title">Quello che faccio.</h2></div><button class="button motion-control" data-portfolio-motion aria-pressed="false" hidden>Metti in pausa le animazioni</button></div>
+    {{ range $index, $section := .Site.Data.portfolio.sections }}
+    <article class="work-section" id="{{ .id }}">
+      <div class="work-copy"><p class="eyebrow">{{ printf "%02d" (add $index 1) }} / {{ .label }}</p><h3>{{ .title }}</h3><p>{{ .description }}</p>{{ with .url }}<a class="text-link" href="{{ . }}">{{ $section.link }} ↗</a>{{ end }}</div>
+      <figure class="work-scene" data-animated>{{ partial "pixel-scene.html" . }}<figcaption><span aria-hidden="true">▸</span> {{ .caption }}</figcaption></figure>
+    </article>
+    {{ end }}
+  </section>
+  <section class="technology-section" id="tecnologie" aria-labelledby="tech-title" data-animated>
+    <div class="container technology-layout"><div><p class="eyebrow">NEL MIO INVENTARIO</p><h2 id="tech-title">Tecnologie</h2><p>Strumenti diversi.<br>La stessa curiosità.</p></div>
+      <div class="technology-rows">
+      {{ range .Site.Data.portfolio.technologies }}
+        {{ $row := . }}
+        {{ $repeats := 2 }}{{ with .items }}{{ $repeats = math.Max 1 (math.Ceil (div 6.0 (len .))) }}{{ end }}
+        {{ $duration := mul 6 (mul $repeats (math.Max 3 (len .items))) }}
+        <div class="technology-row"><h3 id="tech-{{ .id }}">{{ .title }}</h3><div class="technology-window" tabindex="0" role="region" aria-labelledby="tech-{{ .id }}"><div class="technology-track" data-direction="{{ .direction }}" style="--track-duration:{{ $duration }}s">
+          {{ range $copy := seq 2 }}<ul class="technology-group" {{ if eq $copy 2 }}aria-hidden="true"{{ end }}>
+            {{ range $repeat := seq $repeats }}
+              {{ if $row.items }}{{ range $row.items }}<li class="tech-chip" {{ if gt $repeat 1 }}aria-hidden="true"{{ end }}>{{ with .logo }}<img src="{{ . | relURL }}" width="20" height="20" alt="" loading="lazy">{{ end }}<span>{{ .name }}</span>{{ with .note }}<small>{{ . }}</small>{{ end }}</li>{{ end }}
+              {{ else }}{{ range seq 3 }}<li class="tech-chip tech-chip--empty" {{ if gt $repeat 1 }}aria-hidden="true"{{ end }}><span aria-hidden="true">+</span> {{ $row.title }} / slot {{ printf "%02d" . }}</li>{{ end }}{{ end }}
+            {{ end }}
+          </ul>{{ end }}
+        </div></div></div>
+      {{ end }}
+      </div>
+    </div>
+  </section>
+  <section class="container experience-section" id="esperienze" aria-labelledby="experience-title">
+    <p class="eyebrow">IL PERCORSO, IN BREVE</p><h2 id="experience-title">Esperienze più rilevanti</h2><p class="section__description">Una selezione delle piattaforme e dei prodotti su cui ho lavorato: dal full-stack all’IoT, fino alla guida tecnica delle mie startup.</p>
+    <ol class="experience-list">{{ range .Site.Data.portfolio.experiences }}
+      <li><div class="experience-role"><h3>{{ if .url }}<a href="{{ .url }}">{{ .company }} ↗</a>{{ else }}{{ .company }}{{ end }}</h3>{{ with .organization }}<p>{{ . }}</p>{{ end }}{{ with .role }}<p>{{ . }}</p>{{ end }}{{ with .period }}<p>{{ . }}</p>{{ end }}</div>
+        <div><p>{{ .summary }}</p><div class="experience-details"><h4>Cosa ho fatto</h4>
+          <ul class="experience-achievements">{{ range .achievements }}<li>{{ . }}</li>{{ end }}</ul>
+          <p class="experience-stack-label">Tecnologie e ambiti</p><ul class="experience-stack" aria-label="Tecnologie e ambiti per {{ .company }}">{{ range .technologies }}<li class="badge">{{ . }}</li>{{ end }}</ul>
+        </div></div>
+      </li>{{ end }}</ol>
+    <a class="text-link" href="https://www.linkedin.com/in/lucasciacca93/">Il mio percorso su LinkedIn ↗</a>
+  </section>
+  <section class="container portfolio-contact" id="contatti" aria-labelledby="contact-title"><div><p class="eyebrow">FUORI DAL LABORATORIO</p><h2 id="contact-title">Parliamo di tecnologia?</h2><p>Prodotti, codice o l’ennesima idea da stampare.</p></div><a class="button button--primary" href="https://www.linkedin.com/in/lucasciacca93/">Scrivimi su LinkedIn ↗</a></section>
+</div>

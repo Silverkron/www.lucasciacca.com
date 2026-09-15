@@ -1,0 +1,1 @@
+{{ define "main" }}<section class="container section"><h1>{{ .Title }}</h1><div class="taxonomy-list">{{ range .Data.Terms.Alphabetical }}<a class="button" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span class="badge">{{ .Count }}</span></a>{{ else }}<p>Nessun elemento presente.</p>{{ end }}</div></section>{{ end }}

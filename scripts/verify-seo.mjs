@@ -1,0 +1,48 @@
+// Verify generated SEO signals without relying on JavaScript rendering.
+import assert from 'node:assert/strict';
+import { readFileSync, existsSync } from 'node:fs';
+import { resolve, join } from 'node:path';
+const root=resolve(process.argv[2] || 'public');
+const home=readFileSync(join(root,'index.html'),'utf8');
+const error=readFileSync(join(root,'404.html'),'utf8');
+const attr=(tag,key)=>tag.match(new RegExp(`\\b${key}=(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`))?.slice(1).find(v=>v!==undefined);
+const tags=(html,name)=>[...html.matchAll(new RegExp(`<${name}\\b[^>]*>`,'g'))].map(m=>m[0]);
+const meta=(html,key)=>tags(html,'meta').filter(t=>attr(t,'name')===key||attr(t,'property')===key).map(t=>attr(t,'content'));
+const canonical=html=>tags(html,'link').filter(t=>attr(t,'rel')==='canonical').map(t=>attr(t,'href'));
+const base='https://www.lucasciacca.com/';
+assert.deepEqual(canonical(home),[base]);
+assert.deepEqual(canonical(error),[]);
+assert.match(meta(error,'robots')[0],/noindex/);
+assert(!meta(home,'robots').some(v=>/noindex/.test(v)));
+assert.match(home,/<html lang=["']?it-it/i);
+for(const key of ['description','og:title','og:description','og:image','og:image:alt','og:url','twitter:title','twitter:description','twitter:image','twitter:image:alt']) assert.equal(meta(home,key).filter(Boolean).length,1,key);
+assert.equal(meta(home,'og:url')[0],base);
+assert.equal(meta(home,'description')[0],meta(home,'og:description')[0]);
+assert.equal(meta(home,'og:title')[0],meta(home,'twitter:title')[0]);
+assert.deepEqual(meta(home,'twitter:card'),['summary']);
+const picture=new URL(meta(home,'og:image')[0]);
+assert.equal(picture.origin,new URL(base).origin);
+assert(existsSync(join(root,picture.pathname)));
+assert.equal(meta(home,'og:image:width')[0],'635');
+assert.equal(meta(home,'og:image:height')[0],'634');
+const schema=JSON.parse(home.match(/<script type=["']?application\/ld\+json["']?>([\s\S]*?)<\/script>/)[1]);
+assert.equal(schema['@type'],'ProfilePage');
+assert.equal(schema.url,base);
+assert.equal(schema.mainEntity['@type'],'Person');
+assert.equal(schema.mainEntity.name,'Luca Sciacca');
+assert.equal(schema.mainEntity['@id'],base+'#person');
+assert(schema.mainEntity.sameAs.includes('https://github.com/Silverkron'));
+assert(!/class=["']?game-accessible-title[^>]*>[^<]*<\/h1>/.test(home));
+const robots=readFileSync(join(root,'robots.txt'),'utf8');
+assert(robots.includes('Sitemap: '+base+'sitemap.xml'));
+assert(!/^Disallow:\s*\/\s*$/m.test(robots));
+const llms=readFileSync(join(root,'llms.txt'),'utf8');
+assert(llms.startsWith('# Luca Sciacca\n\n> '));
+assert.match(llms,/## Profilo e attività/);
+for(const match of llms.matchAll(/\]\((https:\/\/[^)]+)\)/g)) {
+  const url=new URL(match[1]);
+  if(url.origin!==new URL(base).origin) continue;
+  assert(existsSync(join(root,url.pathname,url.pathname.endsWith('/')?'index.html':'')),match[1]);
+  if(url.hash) assert(tags(home,'[a-z][a-z0-9]*').some(t=>attr(t,'id')===url.hash.slice(1)),match[1]);
+}
+console.log('PASS: canonical, Italian locale, social metadata, ProfilePage/Person, 404 noindex, robots and llms.txt links.');

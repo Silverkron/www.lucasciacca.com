@@ -1,0 +1,322 @@
+{
+  "sections": [
+    {"id":"tuurbo","label":"Startup · dal 2024","title":"Tuurbo.ai","description":"La startup più giovane del mio percorso. Con Tuurbo.ai porto intelligenza artificiale e automazione dentro un prodotto per il web: un punto d’incontro tra la mia attività da CTO e la voglia di costruire qualcosa di nuovo.","url":"https://www.tuurbo.ai/","link":"Scopri Tuurbo.ai","scene":"tuurbo","caption":"Un’idea entra. Le automazioni si mettono al lavoro."},
+    {"id":"seotesteronline","label":"Startup · CTO & co-founder","title":"SEO Tester Online","description":"Una piattaforma di strumenti per analizzare e migliorare la presenza online. È una delle startup che contribuisco a costruire: il luogo in cui visione di prodotto, scelte tecniche e sviluppo si incontrano ogni giorno.","url":"https://www.seotesteronline.com/","link":"Scopri SEO Tester Online","scene":"seo","caption":"Nel laboratorio di analisi, ogni pagina lascia una traccia."},
+    {"id":"software","label":"Dall’idea al prodotto","title":"Software Engineer","description":"Mi piace trasformare un problema in software che abbia senso. Ragiono sul prodotto, progetto le sue parti e scrivo codice: con la curiosità di sperimentare e l’attenzione a quello che dovrà succedere dopo la prima versione.","scene":"software","caption":"Un pezzo alla volta. Poi arriva il momento di collegarli."},
+    {"id":"backend","label":"Dietro le interfacce","title":"Backend Developer","description":"È la parte che non si vede, ma tiene insieme tutto: dati, API, integrazioni e logica applicativa. Mi occupo di far dialogare i sistemi e di dare una struttura alle idee, anche quando la complessità cresce.","scene":"backend","caption":"Richiesta ricevuta. Il reparto dati sta rispondendo."},
+    {"id":"devops","label":"Dal codice alla produzione","title":"DevOps","description":"Il lavoro non finisce quando il codice funziona sul mio computer. Mi interessano infrastrutture, deploy e automazioni: tutto ciò che permette al software di passare dallo sviluppo alla vita reale, senza perdere di vista cosa sta succedendo.","scene":"devops","caption":"Build, test, deploy. Il rack non dorme, io ogni tanto sì."},
+    {"id":"stampa-3d","label":"Fuori dallo schermo","title":"3D Print Enthusiast","description":"A un certo punto i pixel non bastano più. Con la stampa 3D porto gli esperimenti sulla scrivania: modelli, prove e piccoli oggetti. E quando entrano in gioco elettronica e IoT, il laboratorio diventa ancora più interessante.","url":"https://www.instagram.com/lucasciaccadev/","link":"Gli esperimenti su Instagram","scene":"printing","caption":"Sta stampando un gatto. Biscotto supervisiona."}
+  ],
+  "technologies": [
+    {
+      "id":"devops", "title":"DevOps", "direction":"right",
+      "items": [
+        {"name":"Cloudflare Durable Objects"},
+        {"name":"Cloudflare Queues"},
+        {"name":"Cloudflare Workers KV"},
+        {"name":"Cloudflare Workers"},
+        {"name":"Cloudflare Tunnel"},
+        {"name":"Cloudflare Access"},
+        {"name":"Kubernetes"},
+        {"name":"Terraform"},
+        {"name":"OpenSearch"},
+        {"name":"Fluent Bit"},
+        {"name":"Step Functions"},
+        {"name":"EventBridge"},
+        {"name":"Ansible"},
+        {"name":"Prometheus"},
+        {"name":"Grafana"},
+        {"name":"Elasticsearch"},
+        {"name":"Cloudflare Analytics"},
+        {"name":"Cloudflare WAF"},
+        {"name":"Cloudflare CDN"},
+        {"name":"Cloudflare DNS"},
+        {"name":"Lambda"},
+        {"name":"DynamoDB"},
+        {"name":"Aurora"},
+        {"name":"ElastiCache"},
+        {"name":"RabbitMQ"},
+        {"name":"API Gateway"},
+        {"name":"SQS"},
+        {"name":"SNS"},
+        {"name":"CloudFormation"},
+        {"name":"CodePipeline"},
+        {"name":"CodeBuild"},
+        {"name":"CodeDeploy"},
+        {"name":"CloudTrail"},
+        {"name":"CloudWatch"},
+        {"name":"AWS WAF"},
+        {"name":"CloudFront"},
+        {"name":"Auto Scaling"},
+        {"name":"Elastic Load Balancing"},
+        {"name":"VPC"},
+        {"name":"IAM"},
+        {"name":"Route 53"},
+        {"name":"RDS"},
+        {"name":"EC2"},
+        {"name":"S3"},
+        {"name":"AWS"},
+        {"name":"GitLab CI/CD"},
+        {"name":"GitHub Actions"},
+        {"name":"Docker"},
+        {"name":"Nginx"},
+        {"name":"Redis"},
+        {"name":"PostgreSQL"},
+        {"name":"MySQL"},
+        {"name":"Bash"},
+        {"name":"Linux"},
+        {"name":"Git"}
+      ]
+    },
+    {
+      "id":"software", "title":"Software Engineer", "direction":"left",
+      "items": [
+        {"name":"Cloudflare Workers AI"},
+        {"name":"Edge Functions"},
+        {"name":"Edge Computing"},
+        {"name":"Serverless"},
+        {"name":"GraphQL"},
+        {"name":"WebSocket"},
+        {"name":"Playwright"},
+        {"name":"Selenium"},
+        {"name":"TypeScript"},
+        {"name":"MongoDB"},
+        {"name":"SQLite"},
+        {"name":"Node.js"},
+        {"name":"Python"},
+        {"name":"JavaScript"},
+        {"name":"SQL"},
+        {"name":"REST"},
+        {"name":"GitLab"},
+        {"name":"GitHub"}
+      ]
+    },
+    {
+      "id":"general", "title":"Nerd", "direction":"right",
+      "items": [
+        {"name":"CAN Bus"},
+        {"name":"Modbus"},
+        {"name":"Zigbee2MQTT"},
+        {"name":"ESPHome"},
+        {"name":"Tasmota"},
+        {"name":"OTA Updates"},
+        {"name":"Cloudflare Zero Trust"},
+        {"name":"Serverless Edge"},
+        {"name":"Home Assistant"},
+        {"name":"Node-RED"},
+        {"name":"MQTT"},
+        {"name":"ESP32"},
+        {"name":"ESP8266"},
+        {"name":"Zigbee"},
+        {"name":"Z-Wave"},
+        {"name":"OctoPrint"},
+        {"name":"Marlin"},
+        {"name":"PrusaSlicer"},
+        {"name":"Fusion 360"},
+        {"name":"Pi-hole"},
+        {"name":"I2C"},
+        {"name":"SPI"},
+        {"name":"UART"},
+        {"name":"PWM"},
+        {"name":"ADC"},
+        {"name":"GPIO"},
+        {"name":"Bluetooth Low Energy"},
+        {"name":"Cura"},
+        {"name":"Raspberry Pi"},
+        {"name":"Arduino"},
+        {"name":"Arduino IDE"},
+        {"name":"Raspberry Pi OS"},
+        {"name":"Docker Compose"},
+        {"name":"Serial"},
+        {"name":"Wi-Fi"},
+        {"name":"USB"},
+        {"name":"JetBrains","note":"Il mio preferito"},
+        {"name":"VS Code"}
+      ]
+    }
+  ],
+  "experiences": [
+    {
+      "company": "Tuurbo.ai",
+      "role": "CTO & Co-founder",
+      "url": "https://www.tuurbo.ai/",
+      "summary": "Piattaforma SaaS per automatizzare l’ottimizzazione tecnica dei siti web.",
+      "achievements": [
+        "Progettazione e sviluppo dell’architettura backend e infrastrutturale con Node.js e TypeScript.",
+        "Architettura basata su microservizi, componenti serverless e tecnologie edge.",
+        "Caching e messaging per orchestrare processi distribuiti, workload asincroni e comunicazione tra servizi."
+      ],
+      "technologies": [
+        "Node.js",
+        "JavaScript",
+        "TypeScript",
+        "Microservices",
+        "Serverless Architecture",
+        "Edge Computing",
+        "Redis",
+        "AWS SQS",
+        "RabbitMQ",
+        "Message Queues",
+        "AWS",
+        "REST API",
+        "Caching",
+        "Cloud Infrastructure",
+        "DevOps"
+      ],
+      "source": "Descrizione fornita da Luca Sciacca"
+    },
+    {
+      "company": "SEO Tester Online",
+      "role": "CTO & Co-founder",
+      "url": "https://www.seotesteronline.com/",
+      "summary": "Piattaforma SaaS per analisi, monitoraggio e ottimizzazione SEO.",
+      "achievements": [
+        "Sviluppo ed evoluzione dell’architettura backend e dei sistemi di acquisizione ed elaborazione dati per audit, keyword research, tracking e analisi SEO.",
+        "Progettazione ed evoluzione di sistemi distribuiti di crawling e scraping.",
+        "Infrastrutture proxy e processi asincroni per raccogliere ed elaborare grandi quantità di dati dal web e dai motori di ricerca."
+      ],
+      "technologies": [
+        "PHP",
+        "JavaScript",
+        "Node.js",
+        "AngularJS",
+        "MySQL",
+        "Elasticsearch",
+        "Redis",
+        "AWS",
+        "REST API",
+        "JWT",
+        "Big Data",
+        "Distributed Systems",
+        "Web Scraping",
+        "Web Crawling",
+        "Proxy Infrastructure",
+        "Data Pipelines",
+        "HTML Parsing",
+        "Caching",
+        "Cloud Infrastructure",
+        "Git"
+      ],
+      "source": "Descrizione fornita da Luca Sciacca"
+    },
+    {
+      "company": "BreathPod",
+      "organization": "Pane&Design",
+      "summary": "Ecosistema hardware/software per pod immersivi che combinano video, audio, illuminazione e vibrazioni.",
+      "achievements": [
+        "Sviluppo dell’infrastruttura, del backend e del software IoT per il controllo dei Pod.",
+        "Sistemi di comunicazione con il cloud e gestione remota dei dispositivi.",
+        "Distribuzione degli aggiornamenti OTA per l’ecosistema multisensoriale."
+      ],
+      "technologies": [
+        "IoT",
+        "Edge Computing",
+        "OTA Updates",
+        "Backend Development",
+        "Cloud Infrastructure",
+        "Device Management",
+        "Remote Monitoring",
+        "Multimedia Orchestration",
+        "Hardware/Software Integration",
+        "REST API",
+        "Linux",
+        "Networking"
+      ],
+      "source": "Descrizione fornita da Luca Sciacca"
+    },
+    {
+      "company": "WashOut",
+      "organization": "Pane&Design",
+      "summary": "Piattaforma digitale per il Car Care e il lavaggio auto e moto on-demand.",
+      "achievements": [
+        "Realizzazione dell’applicazione mobile ibrida.",
+        "Riprogettazione del backend, dei sistemi di pagamento e della nuova infrastruttura tecnologica.",
+        "Evoluzione dei servizi a supporto dell’applicazione cliente, degli operatori e della piattaforma gestionale."
+      ],
+      "technologies": [
+        "Hybrid Mobile Development",
+        "JavaScript",
+        "Backend Development",
+        "REST API",
+        "Payment Systems",
+        "Cloud Infrastructure",
+        "Geolocation",
+        "Database Design",
+        "System Integration",
+        "DevOps",
+        "Linux"
+      ],
+      "source": "Descrizione fornita da Luca Sciacca"
+    },
+    {
+      "company": "Loom Social",
+      "organization": "Pane&Design",
+      "summary": "Piattaforma per gestire, pubblicare e analizzare contenuti social attraverso dati, metriche e algoritmi.",
+      "achievements": [
+        "Sviluppo backend e integrazioni con l’ecosistema Meta.",
+        "Flussi di collegamento degli account social e acquisizione di dati e metriche.",
+        "Gestione della pubblicazione dei contenuti sui social network."
+      ],
+      "technologies": [
+        "PHP",
+        "Symfony",
+        "Angular",
+        "Meta Graph API",
+        "Facebook API",
+        "Instagram API",
+        "OAuth",
+        "REST API",
+        "Memcached",
+        "JavaScript"
+      ],
+      "source": "Descrizione fornita da Luca Sciacca"
+    },
+    {
+      "company": "Hostess.it",
+      "organization": "Pane&Design",
+      "summary": "Piattaforma per pubblicare e cercare opportunità lavorative per hostess, steward, promoter e personale per eventi e fiere.",
+      "achievements": [
+        "Sviluppo backend e frontend della piattaforma e della dashboard amministrativa.",
+        "Progettazione del motore di ricerca full-text per annunci e profili.",
+        "Lavoro sull’infrastruttura cloud, sul caching e sui sistemi asincroni e di messaggistica a supporto di performance, affidabilità e scalabilità."
+      ],
+      "technologies": [
+        "PHP",
+        "Angular",
+        "Elasticsearch",
+        "MySQL",
+        "Redis",
+        "Memcached",
+        "RabbitMQ",
+        "AWS EC2",
+        "AWS S3",
+        "AWS RDS",
+        "Linux",
+        "Ansible",
+        "REST API"
+      ],
+      "source": "Descrizione fornita da Luca Sciacca"
+    },
+    {
+      "company": "StudentFlat",
+      "organization": "White Dart Communication S.R.L.",
+      "summary": "Piattaforma per la ricerca e la pubblicazione di appartamenti e stanze per studenti fuorisede.",
+      "achievements": [
+        "Sviluppo full-stack della logica applicativa backend e delle interfacce frontend.",
+        "Progettazione e sviluppo di parte del sistema di geolocalizzazione e visualizzazione degli annunci sulla mappa.",
+        "Gestione del posizionamento degli immobili e integrazione con i servizi cartografici di Google."
+      ],
+      "technologies": [
+        "PHP",
+        "JavaScript",
+        "jQuery",
+        "Google Maps API",
+        "Google APIs",
+        "MySQL",
+        "HTML",
+        "CSS"
+      ],
+      "source": "Descrizione fornita da Luca Sciacca"
+    }
+  ]
+}

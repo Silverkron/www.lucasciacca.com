@@ -1,0 +1,7 @@
+<footer class="footer"><div class="container">
+  <div class="footer__main"><div><a class="logo__link" href="{{ "/" | relURL }}"><span class="pixel-mark" aria-hidden="true">&lt;/&gt;</span>{{ .Site.Params.title }}</a><p>Un laboratorio digitale.<br>Una curiosità che non va in pausa.</p></div>
+    <nav aria-label="Navigazione footer">{{ range .Site.Menus.footer }}<a href="{{ .URL | relURL }}">{{ .Name }}</a>{{ end }}</nav>
+    <nav aria-label="Social">{{ range .Site.Params.social }}<a href="{{ .link }}" rel="me">{{ .name }} <span aria-hidden="true">↗</span></a>{{ end }}</nav>
+  </div>
+  <div class="footer__status"><span>© {{ now.Year }} Luca Sciacca · Realizzato con Hugo</span><a href="#top">Torna su ↑</a><span class="eyebrow"><span class="status-dot" aria-hidden="true"></span> CONTINUA A ESPLORARE</span></div>
+</div></footer>

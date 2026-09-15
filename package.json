@@ -1,37 +1,15 @@
 {
-  "name": "silverkron.github.io",
-  "version": "1.0.0",
-  "description": "Luca Sciacca's website",
-  "main": "src/main.js",
+  "name": "luca-sciacca-pixel-lab",
+  "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --open --config ./build/webpack.dev.conf.js",
-    "build": "webpack --config ./build/webpack.build.conf.js"
+    "dev": "hugo server --disableFastRender",
+    "build": "hugo --minify --cleanDestinationDir",
+    "check:site": "node scripts/verify-site.mjs",
+    "check:game": "node scripts/verify-game.mjs",
+    "check:home": "node scripts/verify-home.mjs",
+    "check:seo": "node scripts/verify-seo.mjs"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Silverkron/silverkron.github.io.git"
-  },
-  "keywords": [
-    "website",
-    "terminal"
-  ],
-  "author": "Luca Sciacca",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Silverkron/silverkron.github.io/issues"
-  },
-  "homepage": "https://github.com/Silverkron/silverkron.github.io#readme",
-  "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
-    "babel-loader": "^8.1.0",
-    "copy-webpack-plugin": "^5.1.1",
-    "html-webpack-plugin": "^4.0.3",
-    "http-server": "^0.12.1",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3",
-    "webpack-merge": "^4.2.2"
-  },
-  "dependencies": {}
+  "dependencies": {
+    "excalibur": "0.32.0"
+  }
 }

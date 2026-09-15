@@ -1,0 +1,62 @@
+{{ $id := .scene }}
+{{/* Native pixel coordinates; local SVG primitives, not downloaded artwork. */}}
+<svg class="pixel-scene scene-{{ $id }}" viewBox="0 0 192 128" width="384" height="256" aria-hidden="true" focusable="false" shape-rendering="crispEdges">
+  <defs>
+    <pattern id="tile-{{ $id }}" width="16" height="16" patternUnits="userSpaceOnUse"><path fill="#a8a8a8" d="M0 0h16v16H0z"/><path fill="#969696" d="M0 15h16v1H0zM15 0h1v16h-1z"/><path fill="#bcbcbc" d="M1 1h2v1H1z"/></pattern>
+    <g id="desk-{{ $id }}"><path fill="#606060" d="M0 3h56v25H0z"/><path fill="#202020" d="M2 22h5v10H2zM49 22h5v10h-5z"/><path fill="#202020" d="M0 0h56v24H0z"/><path fill="#eeeeee" d="M2 2h52v17H2z"/><path fill="#a8a8a8" d="M2 19h52v3H2z"/><path fill="#606060" d="M5 5h1v11H5zM51 5h1v11h-1z"/></g>
+    <g id="monitor-{{ $id }}"><path fill="#202020" d="M0 0h24v17H0zM10 17h4v3h-4zM6 20h12v2H6z"/><path fill="#a8a8a8" d="M1 1h22v14H1z"/><path fill="#202020" d="M3 3h18v10H3z"/><path fill="#eeeeee" d="M5 5h7v1H5zM5 8h11v1H5zM5 11h5v1H5z"/><path class="scene-blink" fill="#eeeeee" d="M12 11h2v1h-2z"/><path fill="#606060" d="M20 15h2v1h-2z"/></g>
+    <g id="rack-{{ $id }}"><path fill="#606060" d="M2 40h28v4H2z"/><path fill="#202020" d="M0 0h28v40H0z"/><path fill="#a8a8a8" d="M2 2h24v4H2z"/><path fill="#606060" d="M2 8h24v8H2zM2 18h24v8H2zM2 28h24v8H2z"/><path fill="#202020" d="M4 10h13v1H4zM4 13h13v1H4zM4 20h13v1H4zM4 23h13v1H4zM4 30h13v1H4zM4 33h13v1H4z"/><path class="scene-blink" fill="#eeeeee" d="M21 11h2v2h-2zM21 31h2v2h-2z"/><path fill="#a8a8a8" d="M21 21h2v2h-2z"/></g>
+    <g id="person-{{ $id }}"><path fill="#606060" d="M0 24h15v2H0z"/><path fill="#202020" d="M2 1h10v2h2v8h-2v2h-2v2h4v2h1v7h-3v-4h-1v8H7v-5H6v5H2v-8H1v4h-3v-7h1v-2h5v-2H1V4h1z"/><path fill="#606060" d="M3 2h7v1h2v2H2V4h1z"/><path fill="#eeeeee" d="M2 5h10v5h-2v2H4v-2H2z"/><path fill="#202020" d="M2 6h4v3H2zM8 6h4v3H8zM6 7h2v1H6z"/><path fill="#a8a8a8" d="M2 15h3v2h3v-2h3v7H2z"/><path fill="#eeeeee" d="M-1 18h2v3h-2zM12 18h2v3h-2z"/></g>
+    <g id="plant-{{ $id }}"><path fill="#202020" d="M2 10h12v8H2zM5 3h2v9H5zM9 0h2v12H9zM1 2h3v5H1zM12 4h3v4h-3z"/><path fill="#eeeeee" d="M4 12h8v4H4z"/></g>
+    <g id="keyboard-{{ $id }}"><path fill="#606060" d="M0 0h22v6H0z"/><path fill="#eeeeee" d="M1 1h20v4H1z"/><path fill="#606060" d="M2 2h2v1H2zM6 2h2v1H6zM10 2h2v1h-2zM14 2h2v1h-2zM18 2h2v1h-2zM6 4h10v1H6z"/></g>
+  </defs>
+  <path fill="#202020" d="M0 0h192v128H0z"/>
+  <path fill="#606060" d="M4 4h184v30H4z"/><path fill="#eeeeee" d="M4 4h184v3H4z"/>
+  <path fill="#a8a8a8" d="M8 9h176v20H8z"/>
+  <path fill="#202020" d="M12 12h30v14H12zM150 12h30v14h-30z"/>
+  <path fill="#eeeeee" d="M14 14h26v9H14zM152 14h26v9h-26z"/>
+  <path fill="#606060" d="M26 14h2v9h-2zM164 14h2v9h-2z"/>
+  <path fill="#202020" d="M59 13h74v13H59z"/><text x="96" y="22" text-anchor="middle" fill="#eeeeee" font-family="monospace" font-size="7">{{ if eq $id "tuurbo" }}TUURBO / AI{{ else if eq $id "seo" }}SEO TESTER ONLINE{{ else if eq $id "software" }}SOFTWARE LAB{{ else if eq $id "backend" }}BACKEND / API{{ else if eq $id "devops" }}BUILD &gt; DEPLOY{{ else }}3D PRINT LAB{{ end }}</text>
+  <path fill="url(#tile-{{ $id }})" d="M8 34h176v86H8z"/>
+  <path fill="#606060" d="M8 34h176v3H8zM8 37h3v83H8z"/>
+  <path fill="#eeeeee" d="M4 120h75v4H4zM113 120h75v4h-75z"/><path fill="#606060" d="M79 120h34v8H79z"/>
+  {{ if eq $id "tuurbo" }}
+    <use href="#desk-{{ $id }}" x="20" y="56"/><use href="#monitor-{{ $id }}" x="27" y="39"/><use href="#keyboard-{{ $id }}" x="28" y="62"/>
+    <path fill="#202020" d="M87 47h45v5H87zM129 47h5v43h-5zM76 86h55v5H76z"/><path fill="#eeeeee" d="M88 49h43v1H88zM131 50h1v38h-1zM77 88h54v1H77z"/>
+    <g class="scene-packet"><path fill="#202020" d="M87 44h9v9h-9z"/><path fill="#eeeeee" d="M89 46h5v5h-5z"/></g>
+    <use href="#rack-{{ $id }}" x="145" y="42"/>
+    <g class="scene-robot"><path fill="#202020" d="M93 73h14v3h3v12h-3v6H93v-6h-3V76h3z"/><path fill="#eeeeee" d="M94 76h12v10H94z"/><path fill="#202020" d="M96 79h2v3h-2zM102 79h2v3h-2z"/><path fill="#606060" d="M96 88h8v3h-8z"/></g>
+    <use href="#person-{{ $id }}" x="45" y="86"/>
+  {{ else if eq $id "seo" }}
+    <use href="#desk-{{ $id }}" x="23" y="59"/><use href="#monitor-{{ $id }}" x="29" y="41"/><use href="#keyboard-{{ $id }}" x="30" y="65"/>
+    <path fill="#202020" d="M103 41h58v55h-58z"/><path fill="#eeeeee" d="M106 44h52v48h-52z"/>
+    <path fill="#606060" d="M111 49h29v3h-29zM111 56h39v2h-39zM111 61h32v2h-32zM111 66h35v2h-35zM112 85h7v-9h-7zM123 85h7V72h-7zM134 85h7V69h-7zM145 85h7V65h-7z"/>
+    <g class="scene-scan"><path fill="#202020" d="M102 52h60v2h-60zM100 50h3v6h-3zM161 50h3v6h-3z"/></g>
+    <use href="#person-{{ $id }}" x="66" y="83"/><use href="#plant-{{ $id }}" x="164" y="100"/>
+  {{ else if eq $id "software" }}
+    <use href="#desk-{{ $id }}" x="24" y="56"/><use href="#monitor-{{ $id }}" x="29" y="40"/><use href="#keyboard-{{ $id }}" x="32" y="63"/>
+    <path fill="#202020" d="M105 43h58v38h-58z"/><path fill="#eeeeee" d="M108 46h52v32h-52z"/><path fill="#606060" d="M114 52h15v9h-15zM140 52h14v9h-14zM125 68h17v6h-17zM129 56h11v2h-11zM132 58h2v10h-2z"/>
+    <path fill="#202020" d="M93 91h76v12H93z"/><path fill="#606060" d="M95 94h72v6H95z"/>
+    <g class="scene-build"><path fill="#202020" d="M101 83h12v13h-12zM122 83h12v13h-12zM143 83h12v13h-12z"/><path fill="#eeeeee" d="M103 85h8v7h-8zM124 85h8v7h-8zM145 85h8v7h-8z"/></g>
+    <use href="#person-{{ $id }}" x="49" y="83"/>
+  {{ else if eq $id "backend" }}
+    <use href="#rack-{{ $id }}" x="26" y="42"/><use href="#rack-{{ $id }}" x="76" y="42"/>
+    <path fill="#202020" d="M53 60h23v3H53zM103 60h42v3h-42zM141 62h3v38H91v-3h50z"/>
+    <path fill="#202020" d="M133 42h35v33h-35z"/><path fill="#eeeeee" d="M135 45h31v26h-31z"/><path fill="#606060" d="M135 50h31v2h-31zM135 59h31v2h-31zM138 46h22v2h-22zM138 64h22v2h-22z"/>
+    <g class="scene-packet"><path fill="#eeeeee" d="M58 59h4v5h-4zM108 59h4v5h-4z"/></g><use href="#person-{{ $id }}" x="77" y="88"/>
+  {{ else if eq $id "devops" }}
+    <use href="#rack-{{ $id }}" x="24" y="40"/><use href="#rack-{{ $id }}" x="61" y="40"/><use href="#rack-{{ $id }}" x="98" y="40"/>
+    <path fill="#202020" d="M141 41h27v38h-27z"/><path fill="#eeeeee" d="M143 43h23v32h-23z"/><path fill="#606060" d="M146 47h16v3h-16zM146 54h11v3h-11zM146 61h14v3h-14z"/>
+    <path fill="#202020" d="M24 90h105v10H24z"/><path fill="#606060" d="M26 92h101v6H26z"/>
+    <g class="scene-deploy"><path fill="#202020" d="M30 85h10v14H30z"/><path fill="#eeeeee" d="M32 87h6v8h-6z"/></g><use href="#person-{{ $id }}" x="147" y="87"/>
+  {{ else }}
+    <use href="#desk-{{ $id }}" x="20" y="58"/><use href="#monitor-{{ $id }}" x="27" y="41"/><use href="#keyboard-{{ $id }}" x="29" y="64"/>
+    <path fill="#606060" d="M97 100h68v5H97z"/><path fill="#202020" d="M99 43h64v57H99z"/><path fill="#a8a8a8" d="M104 48h54v42h-54z"/><path fill="#606060" d="M108 51h46v37h-46z"/><path fill="#202020" d="M104 53h54v4h-54zM105 88h51v5h-51z"/>
+    <path fill="#eeeeee" d="M114 80v-9h3v3h5v-3h3v8h11v8h-22zM137 80h3v7h-3z"/><path fill="#202020" d="M117 76h1v2h-1zM121 76h1v2h-1z"/>
+    <g class="scene-print"><path fill="#202020" d="M109 50h12v12h-4v4h-4v-4h-4z"/><path fill="#eeeeee" d="M111 52h8v5h-8z"/></g>
+    <path fill="#eeeeee" d="M108 95h13v2h-13z"/><path class="scene-blink" fill="#eeeeee" d="M152 95h3v2h-3z"/>
+    <path fill="#202020" d="M171 48h9v27h-9z"/><path fill="#eeeeee" d="M173 52h5v19h-5z"/><path fill="#606060" d="M174 55h3v13h-3z"/>
+    <use href="#person-{{ $id }}" x="53" y="87"/>
+  {{ end }}
+  <path fill="#202020" d="M12 108h10v7H12z"/><path fill="#eeeeee" d="M14 110h6v1h-6z"/>
+</svg>

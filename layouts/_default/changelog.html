@@ -1,0 +1,50 @@
+{{ define "main" }}
+
+<div class="container">
+  <div class="row">
+
+    <div class="col col-12">
+      <div class="page-head">
+        <h1 class="page-title">{{ .Title }}</h1>
+        {{ if .Description }}
+        <p class="page-description">{{ .Description }}</p>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- begin page -->
+<div class="container">
+  <article class="page">
+    <div class="page__content">
+
+      <div class="form-box">
+        <div class="contact-head">
+
+          {{ if .Params.logs }}
+            <ul>
+              {{ range $item := .Params.logs }}
+                <li>
+                  <strong>{{$item.date}}</strong>
+
+                  <ul>
+                    {{ range $caption := $item.captions }}
+                      <li>{{ $caption | safeHTML }}</li>
+                    {{ end }}
+                  </ul>
+                </li>
+              {{ end }}
+            </ul>
+          {{ end }}
+        </div>
+      </div>
+
+    </div>
+  </article>
+</div>
+<!-- end page -->
+
+{{ end }}

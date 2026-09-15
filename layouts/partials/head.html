@@ -1,0 +1,59 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ $is404 := eq .Kind "404" }}
+  {{ $title := .Site.Title }}
+  {{ if not .IsHome }}{{ $title = printf "%s | %s" .Title .Site.Title }}{{ end }}
+  {{ if $is404 }}{{ $title = "Pagina non trovata | Luca Sciacca" }}{{ end }}
+  <title>{{ $title }}</title>
+  {{ $description := .Description | default (.Summary | plainify | truncate 160) | default .Site.Params.description }}
+  {{ if .IsHome }}{{ $description = .Site.Params.description }}{{ end }}
+  {{ if $is404 }}{{ $description = "Questa pagina non è disponibile. Torna alla homepage di Luca Sciacca per esplorare attività, tecnologie ed esperienze." }}{{ end }}
+  <meta name="description" content="{{ $description }}">
+  {{ if $is404 }}<meta name="robots" content="noindex, follow">{{ else }}<link rel="canonical" href="{{ .Permalink }}">{{ end }}
+  <link rel="icon" href="{{ "favicon.ico" | relURL }}">
+  <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
+  {{ if .IsHome }}<link rel="describedby" href="{{ "llms.txt" | relURL }}" type="text/plain">{{ end }}
+  {{ with .OutputFormats.Get "rss" }}<link rel="alternate" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ $.Site.Title }}">{{ end }}
+  {{ $image := .Params.Image | default .Site.Params.social_image | default .Site.Params.hero.hero__image | absURL }}
+  {{ $imageAlt := .Params.image_alt | default .Site.Params.social_image_alt }}
+  <meta property="og:title" content="{{ $title }}">
+  <meta property="og:description" content="{{ $description }}">
+  <meta property="og:image" content="{{ $image }}">
+  {{ with $imageAlt }}<meta property="og:image:alt" content="{{ . }}">{{ end }}
+  {{ if .IsHome }}<meta property="og:image:width" content="635"><meta property="og:image:height" content="634"><meta property="og:image:type" content="image/jpeg">{{ end }}
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="{{ .Site.Params.title }}">
+  <meta property="og:type" content="{{ if eq .Section "posts" }}{{ if .IsPage }}article{{ else }}website{{ end }}{{ else }}website{{ end }}">
+  <meta name="twitter:card" content="{{ if .IsHome }}summary{{ else }}summary_large_image{{ end }}">
+  <meta name="twitter:title" content="{{ $title }}">
+  <meta name="twitter:description" content="{{ $description }}">
+  <meta name="twitter:image" content="{{ $image }}">
+  {{ with $imageAlt }}<meta name="twitter:image:alt" content="{{ . }}">{{ end }}
+  {{ if .IsHome }}
+  {{ $socials := slice }}{{ range .Site.Params.social }}{{ $socials = $socials | append .link }}{{ end }}
+  {{ $person := dict "@type" "Person" "@id" (printf "%s#person" .Permalink) "name" .Site.Params.author.author__name "jobTitle" "CTO & Software Engineer" "description" $description "url" .Permalink "image" $image "sameAs" $socials }}
+  {{ $profile := dict "@context" "https://schema.org" "@type" "ProfilePage" "@id" (printf "%s#profile" .Permalink) "url" .Permalink "name" $title "description" $description "inLanguage" .Site.LanguageCode "mainEntity" $person }}
+  <script type="application/ld+json">{{ $profile | jsonify | safeJS }}</script>
+  {{ end }}
+  {{ if and .IsPage (eq .Section "posts") }}
+  {{ $schema := dict "@context" "https://schema.org" "@type" "BlogPosting" "headline" .Title "description" $description "image" $image "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00") "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00") "mainEntityOfPage" .Permalink "author" (dict "@type" "Person" "name" .Site.Params.author.author__name "url" ("/about/" | absURL)) }}
+  <script type="application/ld+json">{{ $schema | jsonify | safeJS }}</script>
+  {{ end }}
+  {{ $font := resources.Get "fonts/silkscreen-latin.woff2" }}
+  <style>@font-face{font-family:Silkscreen;font-style:normal;font-weight:400;font-display:swap;src:url('{{ $font.RelPermalink }}') format('woff2')}</style>
+  <script>
+    try {
+      var theme = localStorage.getItem('theme');
+      var mode = {{ .Site.Params.color_scheme | default "auto" }};
+      document.documentElement.dataset.theme = mode === 'auto' ? (theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) : mode;
+    } catch (_) {}
+  </script>
+  {{ $css := resources.Get "sass/main.scss" | toCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+  {{ if not .Site.IsServer }}
+  <!-- Existing analytics integration; asynchronous and production only. -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TGC8RHRN');</script>
+  {{ end }}
+</head>

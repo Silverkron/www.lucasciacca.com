@@ -1,0 +1,1 @@
+{{ define "main" }}<div class="container"><header class="page-head"><p class="eyebrow">IL MIO INVENTARIO</p><h1 class="page-title">{{ .Title }}</h1>{{ with .Description }}<p class="page-description">{{ . }}</p>{{ end }}</header><div class="row">{{ range .RegularPages }}{{ partial "project-card.html" . }}{{ end }}</div></div>{{ end }}

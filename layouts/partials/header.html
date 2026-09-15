@@ -1,0 +1,13 @@
+<header class="header" id="top">
+  <div class="container header__inner">
+    <a class="logo__link" href="{{ "/" | relURL }}"><span class="pixel-mark" aria-hidden="true">&lt;/&gt;</span><span>Luca Sciacca<span class="logo__caption">CTO · TECH ENTHUSIAST</span></span></a>
+    <button class="menu-toggle" aria-controls="main-nav" aria-expanded="false" hidden>Menu <span aria-hidden="true">≡</span></button>
+    <nav class="main-nav" id="main-nav" aria-label="Navigazione principale">
+      {{ range .Site.Menus.main }}
+      {{ $active := or (eq $.RelPermalink .URL) (and (ne .URL "/") (hasPrefix $.RelPermalink .URL)) }}
+      <a href="{{ .URL | relURL }}" {{ if $active }}aria-current="page"{{ end }}>{{ .Name }}</a>
+      {{ end }}
+    </nav>
+    <button class="theme-toggle" aria-label="Attiva tema scuro" aria-pressed="false" hidden><span aria-hidden="true">◐</span></button>
+  </div>
+</header>
