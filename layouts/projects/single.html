@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col col-12">
                     <div class="page-image">
-                        <img class="lazy" data-src="{{ .Params.Image | absURL }}" alt="{{ .Title }}">
+                        <img loading="lazy" decoding="async" src="{{ .Params.Image | absURL }}" alt="{{ .Title }}">
                     </div>
                 </div>
             </div>
@@ -27,13 +27,12 @@
             <div class="project__nav">
                 <a class="project__prev" href="{{ .PrevInSection.Permalink }}">
                     <div class="project__box">
-                        <span class="project__nav-info">Next Project <i
-                                class="ion ion-md-arrow-round-forward arrow-right"></i></span>
+                        <span class="project__nav-info">Progetto successivo →</span>
                         <h2 class="project__nav-title">{{ .PrevInSection.Title }}</h2>
                     </div>
                 </a>
                 <a class="project__nav-image" href="{{ .PrevInSection.Permalink }}">
-                    <img class="lazy" data-src="{{ .PrevInSection.Params.Image }}" alt="{{ .PrevInSection.Title }}">
+                    <img loading="lazy" decoding="async" src="{{ .PrevInSection.Params.Image }}" alt="{{ .PrevInSection.Title }}">
                 </a>
             </div>
         {{ end }}

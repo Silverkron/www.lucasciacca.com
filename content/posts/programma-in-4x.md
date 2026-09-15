@@ -3,7 +3,7 @@ title:  Programmare in x4
 description: "Trasforma il tuo lavoro con l'Intelligenza Artificiale: accelera la produttività, abbraccia l'innovazione e scopri il tuo vero potenziale creativo."
 date:   2024-11-11 22:26:35 +0300
 image:  '/images/programmare-4x/copertina.webp'
-tags:   [ai, code, story]
+tags:   [ai-coding, vibe-coding, code, story]
 ---
 
 # **Programmare in x4**

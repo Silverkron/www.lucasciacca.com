@@ -1,0 +1,41 @@
+# Luca Sciacca
+
+> Sito personale di Luca Sciacca, CTO e co-founder di Tuurbo.ai e SEO Tester Online, software engineer e appassionato di tecnologia, intelligenza artificiale, stampa 3D ed elettronica/IoT.
+
+Il sito è una vetrina personale in italiano, pubblicata come singola homepage.
+Il laboratorio pixel-art è un'esperienza interattiva facoltativa: le informazioni
+professionali sono disponibili nell'HTML, senza bisogno di giocare o eseguire JavaScript.
+Articoli e pagine progetto precedenti non sono attualmente pubblicati.
+
+BreathPod, WashOut, Loom Social e Hostess.it sono esperienze riferite a Pane&Design.
+StudentFlat è riferita a White Dart Communication S.R.L.
+La selezione non dichiara una cronologia né date di impiego.
+
+## Profilo e attività
+
+- [Homepage](https://www.lucasciacca.com/): presentazione di Luca Sciacca.
+- [Cosa faccio](https://www.lucasciacca.com/#cosa-faccio): startup, software engineering, backend, DevOps e stampa 3D.
+- [Tuurbo.ai](https://www.lucasciacca.com/#tuurbo): piattaforma SaaS per l'automazione dell'ottimizzazione tecnica dei siti web; backend Node.js e TypeScript, microservizi, serverless ed edge computing.
+- [SEO Tester Online](https://www.lucasciacca.com/#seotesteronline): piattaforma SaaS di analisi e monitoraggio SEO; architettura backend, acquisizione dati e sistemi distribuiti di crawling e scraping.
+- [Software engineering](https://www.lucasciacca.com/#software): progettazione e sviluppo di prodotti software.
+- [Backend](https://www.lucasciacca.com/#backend): dati, API, integrazioni e logica applicativa.
+- [DevOps](https://www.lucasciacca.com/#devops): infrastrutture, deploy e automazioni.
+- [Stampa 3D](https://www.lucasciacca.com/#stampa-3d): sperimentazione con modelli, oggetti, elettronica e IoT.
+
+## Tecnologie ed esperienze
+
+- [Tecnologie](https://www.lucasciacca.com/#tecnologie): strumenti organizzati in DevOps, Software Engineer e Nerd. L'elenco descrive gli ambiti tecnologici, non certificazioni o livelli di competenza.
+- [Esperienze più rilevanti](https://www.lucasciacca.com/#esperienze): attività concrete e tecnologie relative a Tuurbo.ai, SEO Tester Online, BreathPod, WashOut, Loom Social, Hostess.it e StudentFlat.
+
+## Contatti e profili
+
+- [Contatti](https://www.lucasciacca.com/#contatti): collegamento al profilo LinkedIn per contattare Luca.
+- [LinkedIn](https://www.linkedin.com/in/lucasciacca93/): profilo professionale.
+- [GitHub](https://github.com/Silverkron): profilo sviluppatore.
+- [Instagram](https://www.instagram.com/lucasciaccadev/): profilo personale dedicato alla tecnologia.
+
+## Optional
+
+- [Tuurbo.ai — sito del prodotto](https://www.tuurbo.ai/)
+- [SEO Tester Online — sito del prodotto](https://www.seotesteronline.com/)
+- [Sitemap XML](https://www.lucasciacca.com/sitemap.xml): URL pubblicate e indicizzabili.

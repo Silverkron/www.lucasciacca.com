@@ -1,184 +1,87 @@
-document.addEventListener("DOMContentLoaded", function () {
-    'use strict';
-
-    var html = document.querySelector('html'),
-        menuOpenIcon = document.querySelector(".icon__menu"),
-        menuCloseIcon = document.querySelector(".nav__icon-close"),
-        menuList = document.querySelector(".main-nav"),
-        toggleTheme = document.querySelector(".toggle-theme-js"),
-        btnScrollToTop = document.querySelector(".top");
-
-
-    /* =======================================================
-    // Menu + Theme Switcher
-    ======================================================= */
-    menuOpenIcon.addEventListener("click", () => {
-        menuOpen();
+/* Shared, dependency-free progressive enhancement. */
+(() => {
+  'use strict';
+  const header = document.querySelector('.header');
+  const menu = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('#main-nav');
+  if (header && menu && nav) {
+    header.dataset.enhanced = '';
+    menu.hidden = false;
+    const close = () => { nav.classList.remove('is-open'); menu.setAttribute('aria-expanded', 'false'); };
+    menu.addEventListener('click', () => {
+      const open = menu.getAttribute('aria-expanded') !== 'true';
+      nav.classList.toggle('is-open', open);
+      menu.setAttribute('aria-expanded', String(open));
     });
-
-    menuCloseIcon.addEventListener("click", () => {
-        menuClose();
+    header.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') { close(); menu.focus(); }
     });
-
-    function menuOpen() {
-        menuList.classList.add("is-open");
-    }
-
-    function menuClose() {
-        menuList.classList.remove("is-open");
-    }
-
-    if (toggleTheme) {
-        toggleTheme.addEventListener("click", () => {
-            darkMode();
-        });
-    }
-
-    function isDarkModeEnabled() {
-        const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-        return darkModeMediaQuery.matches;
-    }
-
-    // Theme Switcher
-    function darkMode() {
-        if (html.classList.contains('dark-mode')) {
-            html.classList.remove('dark-mode');
-            localStorage.setItem("theme", "light");
-            document.documentElement.removeAttribute("dark");
-        } else {
-            html.classList.add('dark-mode');
-            localStorage.setItem("theme", "dark");
-            document.documentElement.setAttribute("dark", "");
-        }
-    }
-
-    if (localStorage.getItem("theme")) {
-        if (localStorage.getItem("theme") === "dark") {
-            html.classList.add('dark-mode');
-            localStorage.setItem("theme", "dark");
-            document.documentElement.setAttribute("dark", "");
-        } else {
-            html.classList.remove('dark-mode');
-            localStorage.setItem("theme", "light");
-            document.documentElement.removeAttribute("dark");
-        }
-    } else if (isDarkModeEnabled()) {
-        html.classList.add('dark-mode');
-        localStorage.setItem("theme", "dark");
-        document.documentElement.setAttribute("dark", "");
-    }
-
-
-    /* ================================================================
-    // Stop Animations During Window Resizing and Switching Theme Modes
-    ================================================================ */
-    let disableTransition;
-
-    if (toggleTheme) {
-        toggleTheme.addEventListener("click", () => {
-            stopAnimation();
-        });
-
-        window.addEventListener("resize", () => {
-            stopAnimation();
-        });
-
-        function stopAnimation() {
-            document.body.classList.add("disable-animation");
-            clearTimeout(disableTransition);
-            disableTransition = setTimeout(() => {
-                document.body.classList.remove("disable-animation");
-            }, 100);
-        }
-    }
-
-
-    /* =======================
-    // Responsive Videos
-    ======================= */
-    reframe(".post__content iframe:not(.reframe-off), .page__content iframe:not(.reframe-off), .project-content iframe:not(.reframe-off)");
-
-
-    /* =======================
-    // LazyLoad Images
-    ======================= */
-    var lazyLoadInstance = new LazyLoad({
-        elements_selector: ".lazy"
-    })
-
-    /* =======================
-    // Zoom Image
-    ======================= */
-    const lightense = document.querySelector(".page__content img, .post__content img, .project-content img, .gallery__image img"),
-        imageLink = document.querySelectorAll(".page__content a img, .post__content a img, .project-content a img, .gallery__image a img");
-
-    if (imageLink) {
-        for (var i = 0; i < imageLink.length; i++) imageLink[i].parentNode.classList.add("image-link");
-        for (var i = 0; i < imageLink.length; i++) imageLink[i].classList.add("no-lightense");
-    }
-
-    if (lightense) {
-        Lightense(".page__content img:not(.no-lightense), .post__content img:not(.no-lightense), .project-content img:not(.no-lightense), .gallery__image img:not(.no-lightense)", {
-            padding: 60,
-            offset: 30
-        });
-    }
-
-
-    /* ============================
-    // Testimonials Slider
-    ============================ */
-    if (document.querySelector(".my-slider")) {
-        var slider = tns({
-            container: ".my-slider",
-            items: 3,
-            slideBy: 1,
-            gutter: 32,
-            nav: true,
-            mouseDrag: true,
-            autoplay: false,
-            controls: false,
-            speed: 500,
-            responsive: {
-                1024: {
-                    items: 3,
-                },
-                768: {
-                    items: 2,
-                },
-                0: {
-                    items: 1,
-                }
-            }
-        });
-    }
-
-
-    /* =================================
-    // Smooth scroll to the tags page
-    ================================= */
-    document.querySelectorAll(".tag__link, .top__link").forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-
-            document.querySelector(this.getAttribute("href")).scrollIntoView({
-                behavior: "smooth"
-            });
-        });
+    nav.addEventListener('click', event => { if (event.target.closest('a')) close(); });
+  }
+  const theme = document.querySelector('.theme-toggle');
+  if (theme) {
+    theme.hidden = false;
+    const update = () => {
+      const dark = document.documentElement.dataset.theme === 'dark';
+      theme.setAttribute('aria-pressed', String(dark));
+      theme.setAttribute('aria-label', dark ? 'Attiva tema chiaro' : 'Attiva tema scuro');
+    };
+    update();
+    theme.addEventListener('click', () => {
+      const value = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = value;
+      try { localStorage.setItem('theme', value); } catch (_) { /* Storage can be unavailable. */ }
+      update();
     });
-
-
-    /* =======================
-    // Scroll Top Button
-    ======================= */
-    btnScrollToTop.addEventListener("click", function () {
-        if (window.scrollY != 0) {
-            window.scrollTo({
-                top: 0,
-                left: 0,
-                behavior: "smooth"
-            })
-        }
+  }
+  const portfolio = document.querySelector('[data-portfolio]');
+  if (portfolio) {
+    const scenes = [...portfolio.querySelectorAll('[data-animated]')];
+    const control = portfolio.querySelector('[data-portfolio-motion]');
+    let paused = false;
+    const sync = () => portfolio.toggleAttribute('data-paused', paused || document.hidden);
+    control.hidden = false;
+    control.addEventListener('click', () => {
+      paused = !paused;
+      control.setAttribute('aria-pressed', String(paused));
+      control.textContent = paused ? 'Riprendi le animazioni' : 'Metti in pausa le animazioni';
+      sync();
     });
-
-});
+    document.addEventListener('visibilitychange', sync);
+    sync();
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => entries.forEach(entry => entry.target.classList.toggle('is-visible', entry.isIntersecting)));
+      scenes.forEach(scene => observer.observe(scene));
+    } else scenes.forEach(scene => scene.classList.add('is-visible'));
+  }
+  const game = document.querySelector('[data-game]');
+  if (!game) return;
+  // Keep the entire game below the actual menu, including an expanded mobile menu.
+  const sizeHeader = () => game.style.setProperty('--site-header-height', (header?.getBoundingClientRect().height || 0) + 'px');
+  sizeHeader();
+  if (header && 'ResizeObserver' in window) new ResizeObserver(sizeHeader).observe(header);
+  let loading = false;
+  const load = async () => {
+    if (loading) return;
+    loading = true;
+    try {
+      const module = await import(game.dataset.module);
+      await module.mount(game);
+    } catch (_) {
+      const button = game.querySelector('[data-retry]');
+      button.hidden = false;
+      game.querySelector('#game-status').textContent = 'Il laboratorio non è disponibile. Puoi scoprire cosa faccio qui sotto o riprovare.';
+      button.onclick = () => { loading = false; button.hidden = true; button.onclick = null; load(); };
+    }
+  };
+  // The game is fetched only near the viewport, after the initial page load.
+  const observe = () => {
+    if (!('IntersectionObserver' in window)) { load(); return; }
+    const observer = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) { observer.disconnect(); load(); }
+    }, { rootMargin: '120px' });
+    observer.observe(game);
+  };
+  if (document.readyState === 'complete') observe();
+  else window.addEventListener('load', observe, { once: true });
+})();

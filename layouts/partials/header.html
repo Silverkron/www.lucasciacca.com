@@ -1,85 +1,13 @@
-<!-- begin header -->
-<header class="header">
-  <div class="container-big">
-    <div class="row">
-      <div class="header__inner col col-12">
-
-        <div class="logo">
-          <a class="logo__link" href="{{ .Site.BaseURL }}">
-            {{ if .Site.Params.logo }}
-            <img class="logo__image" src="{{ .Site.BaseURL }}{{ .Site.Params.logo }}" alt="{{ .Site.Title }}">
-            {{ else }}
-              {{ .Site.Params.title }}
-            {{ end }}
-          </a>
-        </div>
-
-        <nav class="main-nav">
-          <div class="main-nav__box">
-            <div class="nav__icon-close">
-              <i class="ion ion-md-close"></i>
-            </div>
-            <div class="nav__title">Menu</div>
-            <ul class="nav__list list-reset">
-
-              {{ $currentPage := . }}
-              {{ range.Site.Menus.main }}
-              {{ $menuURL := .URL | absLangURL }}
-              {{ $pageURL:= $currentPage.Permalink | absLangURL }}
-              {{ $active := eq $menuURL $pageURL }}
-
-              {{ if .HasChildren }}
-                <li class="nav__item dropdown">
-                  <span class="nav__link dropdown-toggle">{{ .Name }} <i class="ion ion-ios-arrow-down arrow-down"></i></span>
-                  <div class="dropdown-menu">
-                    {{ range .Children }}
-                    {{ $childURL := .URL | absLangURL }}
-                    {{ $active := eq $childURL $pageURL }}
-                    <a href="{{if findRE `^#` .URL}}{{if not $.IsHome}}{{site.BaseURL | relLangURL}}{{end}}{{ .URL }}{{else}}{{.URL | relLangURL}}{{end}}"
-                      class="nav__link {{ if $active }}active-link{{ end }}">{{ .Name }}</a>
-                    {{ end }}
-                  </div>
-                </li>
-
-                {{ else }}
-                <li class="nav__item">
-                  <a href="{{if findRE `^#` .URL}}{{if not $.IsHome}}{{site.BaseURL | relLangURL}}{{end}}{{ .URL }}{{else}}{{.URL | relLangURL}}{{end}}"
-                    class="nav__link {{ if $active }}active-link{{ end }}">{{ .Name }}</a>
-                </li>
-                {{ end }}
-
-              {{ end }}
-
-            </ul>
-          </div>
-        </nav>
-
-        <div class="nav-button">
-          <i class="nav__icon icon__menu ion ion-md-menu"></i>
-
-          {{ if eq .Site.Params.color_scheme "auto" }}
-          <div class="toggle-theme toggle-theme-js">
-            <div class="toggle-moon" title="Enable dark mode"><i class="ion ion-ios-moon"></i></div>
-            <div class="toggle-sun" title="Enable light mode"><i class="ion ion-ios-sunny"></i></div>
-          </div>
-          {{ else if eq .Site.Params.color_scheme "light" }}
-          <div class="toggle-theme theme-light">
-            <div class="toggle-sun" title="Light mode"><i class="ion ion-ios-sunny"></i></div>
-          </div>
-          {{ else if eq .Site.Params.color_scheme "dark" }}
-          <div class="toggle-theme theme-dark">
-            <div class="toggle-moon" title="Dark mode"><i class="ion ion-ios-moon"></i></div>
-          </div>
-          {{ else }}
-          <div class="toggle-theme toggle-theme-js">
-            <div class="toggle-moon" title="Enable dark mode"><i class="ion ion-ios-moon"></i></div>
-            <div class="toggle-sun" title="Enable light mode"><i class="ion ion-ios-sunny"></i></div>
-          </div>
-          {{ end }}
-        </div>
-
-      </div>
-    </div>
+<header class="header" id="top">
+  <div class="container header__inner">
+    <a class="logo__link" href="{{ "/" | relURL }}"><span class="pixel-mark" aria-hidden="true">&lt;/&gt;</span><span>Luca Sciacca<span class="logo__caption">CTO · TECH ENTHUSIAST</span></span></a>
+    <button class="menu-toggle" aria-controls="main-nav" aria-expanded="false" hidden>Menu <span aria-hidden="true">≡</span></button>
+    <nav class="main-nav" id="main-nav" aria-label="Navigazione principale">
+      {{ range .Site.Menus.main }}
+      {{ $active := or (eq $.RelPermalink .URL) (and (ne .URL "/") (hasPrefix $.RelPermalink .URL)) }}
+      <a href="{{ .URL | relURL }}" {{ if $active }}aria-current="page"{{ end }}>{{ .Name }}</a>
+      {{ end }}
+    </nav>
+    <button class="theme-toggle" aria-label="Attiva tema scuro" aria-pressed="false" hidden><span aria-hidden="true">◐</span></button>
   </div>
 </header>
-<!-- end header -->

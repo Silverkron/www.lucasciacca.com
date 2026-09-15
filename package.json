@@ -1,0 +1,15 @@
+{
+  "name": "luca-sciacca-pixel-lab",
+  "private": true,
+  "scripts": {
+    "dev": "hugo server --disableFastRender",
+    "build": "hugo --minify --cleanDestinationDir",
+    "check:site": "node scripts/verify-site.mjs",
+    "check:game": "node scripts/verify-game.mjs",
+    "check:home": "node scripts/verify-home.mjs",
+    "check:seo": "node scripts/verify-seo.mjs"
+  },
+  "dependencies": {
+    "excalibur": "0.32.0"
+  }
+}

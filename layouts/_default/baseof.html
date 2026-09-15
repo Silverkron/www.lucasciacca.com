@@ -4,6 +4,7 @@
 {{ partial "head.html" . }}
 
   <body>
+    <a class="skip-link" href="#main-content">Salta al contenuto</a>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TGC8RHRN"
                       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -12,7 +13,8 @@
     {{ partial "header.html" . }}
 
     <!-- begin content -->
-    <main class="content" aria-label="Content">
+    <main class="content" id="main-content" tabindex="-1">
+      {{ partial "breadcrumbs.html" . }}
       {{ block "main" . }}{{ end }}
     </main>
     <!-- end content -->

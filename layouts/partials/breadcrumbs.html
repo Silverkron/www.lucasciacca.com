@@ -1,0 +1,1 @@
+{{ if not .IsHome }}<nav class="breadcrumbs container" aria-label="Percorso di navigazione"><a href="{{ "/" | relURL }}">Home</a><span aria-hidden="true">/</span>{{ if and .IsPage .Section }}{{ with .CurrentSection }}<a href="{{ .RelPermalink }}">{{ .Title }}</a><span aria-hidden="true">/</span>{{ end }}{{ end }}<span aria-current="page">{{ .Title }}</span></nav>{{ end }}

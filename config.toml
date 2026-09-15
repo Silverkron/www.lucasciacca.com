@@ -1,12 +1,18 @@
 baseURL = 'https://www.lucasciacca.com/'
 languageCode = 'it-IT'
-title = 'Luca Sciacca - Developer e Devops Engineer'
+defaultContentLanguage = 'it'
+title = 'Luca Sciacca — CTO, Software Engineer & Tech Enthusiast'
+# Temporary one-page edition. Sources remain available for future publication.
+ignoreFiles = ['content/posts/', 'content/projects/', 'content/(about|contact|elements|changelog)\.md$']
+disableKinds = ['taxonomy', 'term', 'section', 'RSS']
 
 [params]
 title = "Luca Sciacca"
 
 # TODO localizza delle keyword e basa una strategia dopo la creazione di alcuni contenuti
-description = "Ciao, sono Luca Sciacca, CTO in SEO Tester Online e questo è il mio sito web"
+description = "Sono Luca Sciacca, CTO e co-founder di Tuurbo.ai e SEO Tester Online. Tra sviluppo software, backend, DevOps, intelligenza artificiale e stampa 3D."
+social_image = "/images/me.jpg"
+social_image_alt = "Luca Sciacca"
 color_scheme = "auto" # You can choose three modes auto, light, and dark. By default, the auto mode is set, which means the user can choose the light or dark mode themself.
 
 
@@ -20,27 +26,27 @@ url = "/"
 weight = 1
 
 [[menu.main]]
-identifier = "blog"
-name = "Blog"
-url = "/posts/"
+identifier = "work"
+name = "Cosa faccio"
+url = "/#cosa-faccio"
 weight = 2
 
 [[menu.main]]
-identifier = "projects"
-name = "Progetti"
-url = "/projects/"
+identifier = "stack"
+name = "Tecnologie"
+url = "/#tecnologie"
 weight = 3
 
 [[menu.main]]
-identifier = "changelog"
-name = "Changelog"
-url = "/changelog/"
+identifier = "experience"
+name = "Esperienze"
+url = "/#esperienze"
 weight = 4
 
 [[menu.main]]
 identifier = "contacts"
 name = "Contatti"
-url = "/contact/"
+url = "/#contatti"
 weight = 5
 
 # Footer Menu
@@ -51,27 +57,27 @@ url = "/"
 weight = 1
 
 [[menu.footer]]
-identifier = "blog"
-name = "Blog"
-url = "/posts/"
+identifier = "work"
+name = "Cosa faccio"
+url = "/#cosa-faccio"
 weight = 2
 
 [[menu.footer]]
-identifier = "projects"
-name = "Progetti"
-url = "/projects/"
+identifier = "stack"
+name = "Tecnologie"
+url = "/#tecnologie"
 weight = 3
 
 [[menu.footer]]
-identifier = "changelog"
-name = "Changelog"
-url = "/changelog/"
+identifier = "experience"
+name = "Esperienze"
+url = "/#esperienze"
 weight = 4
 
 [[menu.footer]]
 identifier = "contact"
 name = "Contatti"
-url = "/contact/"
+url = "/#contatti"
 weight = 5
 
 #-------------------------------
@@ -82,6 +88,10 @@ author__bio = "La mia passione è sperimentare e imparare continuamente nuove te
 author__avatar = "/images/me.webp"
 
 # Social Links
+[[params.social]]
+name = "LinkedIn"
+link = "https://www.linkedin.com/in/lucasciacca93/"
+
 [[params.social]]
 icon = "ion-logo-facebook"
 name = "Facebook"
@@ -104,8 +114,8 @@ link = "https://github.com/Silverkron"
 # Hero Settings
 [params.hero]
 enable = true
-hero__title = "Sono Luca e qui esploro e condivido le mie <span class=\"highlight\">passioni</span> ed <span class=\"highlight\">esperienze</span>"
-hero__description = "Come sviluppatore e tech enthusiast, mi muovo tra sviluppo web, software, intelligenza artificiale, stampa 3D e IoT. Qui raccolgo i miei progetti, esperimenti e scoperte: un viaggio personale attraverso le tecnologie che mi appassionano. Entra nel mio laboratorio digitale e scopri come trasformo idee in realtà concrete."
+hero__title = "Luca Sciacca: CTO, Software Engineer e Tech Enthusiast"
+hero__description = "Sono un CTO, uno sviluppatore e un appassionato di tecnologia. Costruisco prodotti con Tuurbo.ai e SEO Tester Online; mi piace capire come funzionano le cose, dal software all’infrastruttura. Fuori dal codice, continuo a sperimentare con stampa 3D, elettronica e IoT."
 hero__image = "/images/me.webp"
 
 
@@ -121,7 +131,7 @@ mailchimp__button__text = "Get updates" # Add your button text
 #-------------------------------
 # Projects Settings
 [params.projects]
-enable = true
+enable = false
 projects__title= "Ultimi progetti"
 projects__description= "Una raccolta dei progetti sviluppati, evidenziando innovazione e competenza tecnica per fornire soluzioni efficaci e orientate ai risultati concreti."
 projects__seeall = "Vedi tutto"
@@ -174,7 +184,7 @@ content = "Keeping your eye on the ball while performing a deep dive on the star
 #-------------------------------
 # Blog Section
 [params.blog]
-enable = true
+enable = false
 blog__title = "Articoli recenti"
 blog__description = "Esplora i miei ultimi articoli. Ogni pezzo offre approfondimenti pratici e strategie avanzate per supportare i professionisti del settore nell’aggiornamento e nel miglioramento continuo."
 blog__seeall = "Vedi tutto"

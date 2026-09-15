@@ -1,35 +1,3 @@
 {{ if .Site.Params.blog.enable }}
-<!-- begin blog -->
-<section class="section blog">
-  <div class="container">
-    <div class="row">
-      <div class="col col-12">
-        <div class="contaniner__inner">
-
-          <div class="section__info">
-            <div class="section__head">
-              <h2 class="section__title">{{ .Site.Params.blog.blog__title | safeHTML }}</h2>
-            </div>
-            {{ if .Site.Params.blog.blog__description }}
-              <p class="section__description">{{ .Site.Params.blog.blog__description }}</p>
-            {{ end }}
-          </div>
-
-          <div class="row">
-            {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts" | first 3 ) }}
-            {{ range $paginator.Pages }}
-              {{ partial "article.html" . }}
-            {{ end }}
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section__navigation">
-    <a href="/posts" class="button button--primary section-button">{{ .Site.Params.blog.blog__seeall }}</a>
-  </div>
-</section>
-<!-- end blog -->
+<section class="section blog container" aria-labelledby="blog-title"><div class="section__info"><div><p class="eyebrow">01 / APPUNTI DAL LABORATORIO</p><h2 id="blog-title">{{ .Site.Params.blog.blog__title }}</h2></div><a class="text-link" href="{{ "/posts/" | relURL }}">Tutti gli articoli ↗</a></div><p class="section__description">{{ .Site.Params.blog.blog__description }}</p><div class="row">{{ range first 3 (where .Site.RegularPages "Type" "posts") }}{{ partial "article.html" . }}{{ end }}</div></section>
 {{ end }}

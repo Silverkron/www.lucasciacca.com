@@ -1,128 +1,59 @@
 <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TGC8RHRN');</script>
-    <!-- End Google Tag Manager -->
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="icon" type="image/x-icon" href="{{ "favicon.ico" | relURL }}">
-
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | relURL }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | relURL }}">
-
-    <title>{{ if not .IsHome }}{{ humanize .Title }} | {{ end }}{{ .Site.Title }}</title>
-    <meta name="description"
-          content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}">
-
-    {{ with .OutputFormats.Get "rss" -}}
-        {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
-    {{ end }}
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}">
-    <meta name="twitter:description"
-          content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
-    {{ if .IsHome }}
-    <meta name="twitter:image" content="{{ .Site.Params.hero.hero__image | absURL }}">{{ else }}
-    <meta name="twitter:image" content="{{ .Params.Image | absURL }}">{{ end }}
-
-    <!-- Facebook OpenGraph -->
-    <meta property="og:title" content="{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}">
-    <meta property="og:description"
-          content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
-    {{ if .IsHome }}
-    <meta property="og:image" content="{{ .Site.Params.hero.hero__image | absURL }}">{{ else }}
-    <meta property="og:image" content="{{ .Params.Image | absURL }}">{{ end }}
-
-    <!-- Preload -->
-    <link rel="preload" href="https://www.lucasciacca.com/images/me.webp" as="image" type="image/webp" fetchpriority="high"/>
-
-    {{- $font700 := resources.Get "fonts/darkergrotesque-700.woff2" -}}
-    {{- $font800 := resources.Get "fonts/darkergrotesque-800.woff2" -}}
-    {{- $fontinter400 := resources.Get "fonts/inter-400.woff2" -}}
-    {{- $fontinter500 := resources.Get "fonts/inter-500.woff2" -}}
-    {{- $fontinter700 := resources.Get "fonts/inter-700.woff2" -}}
-
-    <link rel="preload" href="{{ $font800.RelPermalink }}" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="{{ $fontinter400.RelPermalink }}" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="https://unpkg.com/ionicons@4.5.0/dist/css/ionicons.min.css" as="font" type="font/woff2" crossorigin>
-
-    <style>
-        @font-face {
-            font-family: 'Darker Grotesque';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url('{{ $font700.RelPermalink }}') format('woff2');
-        }
-
-        @font-face {
-            font-family: 'Darker Grotesque';
-            font-style: normal;
-            font-weight: 800;
-            font-display: swap;
-            src: url('{{ $font800.RelPermalink }}') format('woff2');
-        }
-
-        @font-face {
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url('{{ $fontinter400.RelPermalink }}') format('woff2');
-        }
-
-        @font-face {
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 500;
-            font-display: swap;
-            src: url('{{ $fontinter500.RelPermalink }}') format('woff2');
-        }
-
-        @font-face {
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url('{{ $fontinter700.RelPermalink }}') format('woff2');
-        }
-    </style>
-
-    <!-- Fonts -->
-    <link href="https://unpkg.com/ionicons@4.5.0/dist/css/ionicons.min.css" rel="stylesheet">
-
-    <script>
-        {{ if eq .Site.Params.color_scheme "auto" }}
-        if (localStorage.getItem("theme") === "dark") {
-            document.documentElement.setAttribute("dark", "");
-            document.documentElement.classList.add('dark-mode');
-        }
-        {{ else if eq .Site.Params.color_scheme "light" }}
-        document.documentElement.setAttribute("light", "");
-        document.documentElement.classList.add('light-mode');
-        {{ else if eq .Site.Params.color_scheme "dark" }}
-        document.documentElement.setAttribute("dark", "");
-        document.documentElement.classList.add('dark-mode');
-        {{ else }}
-        if (localStorage.getItem("theme") === "dark") {
-            document.documentElement.setAttribute("dark", "");
-            document.documentElement.classList.add('dark-mode');
-        }
-        {{ end }}
-    </script>
-
-    <!-- CSS -->
-    {{ with resources.Get "sass/main.scss" | toCSS | minify }}
-        <style>{{ .Content | safeCSS }}</style>
-    {{ end }}
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ $is404 := eq .Kind "404" }}
+  {{ $title := .Site.Title }}
+  {{ if not .IsHome }}{{ $title = printf "%s | %s" .Title .Site.Title }}{{ end }}
+  {{ if $is404 }}{{ $title = "Pagina non trovata | Luca Sciacca" }}{{ end }}
+  <title>{{ $title }}</title>
+  {{ $description := .Description | default (.Summary | plainify | truncate 160) | default .Site.Params.description }}
+  {{ if .IsHome }}{{ $description = .Site.Params.description }}{{ end }}
+  {{ if $is404 }}{{ $description = "Questa pagina non è disponibile. Torna alla homepage di Luca Sciacca per esplorare attività, tecnologie ed esperienze." }}{{ end }}
+  <meta name="description" content="{{ $description }}">
+  {{ if $is404 }}<meta name="robots" content="noindex, follow">{{ else }}<link rel="canonical" href="{{ .Permalink }}">{{ end }}
+  <link rel="icon" href="{{ "favicon.ico" | relURL }}">
+  <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
+  {{ if .IsHome }}<link rel="describedby" href="{{ "llms.txt" | relURL }}" type="text/plain">{{ end }}
+  {{ with .OutputFormats.Get "rss" }}<link rel="alternate" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ $.Site.Title }}">{{ end }}
+  {{ $image := .Params.Image | default .Site.Params.social_image | default .Site.Params.hero.hero__image | absURL }}
+  {{ $imageAlt := .Params.image_alt | default .Site.Params.social_image_alt }}
+  <meta property="og:title" content="{{ $title }}">
+  <meta property="og:description" content="{{ $description }}">
+  <meta property="og:image" content="{{ $image }}">
+  {{ with $imageAlt }}<meta property="og:image:alt" content="{{ . }}">{{ end }}
+  {{ if .IsHome }}<meta property="og:image:width" content="635"><meta property="og:image:height" content="634"><meta property="og:image:type" content="image/jpeg">{{ end }}
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="{{ .Site.Params.title }}">
+  <meta property="og:type" content="{{ if eq .Section "posts" }}{{ if .IsPage }}article{{ else }}website{{ end }}{{ else }}website{{ end }}">
+  <meta name="twitter:card" content="{{ if .IsHome }}summary{{ else }}summary_large_image{{ end }}">
+  <meta name="twitter:title" content="{{ $title }}">
+  <meta name="twitter:description" content="{{ $description }}">
+  <meta name="twitter:image" content="{{ $image }}">
+  {{ with $imageAlt }}<meta name="twitter:image:alt" content="{{ . }}">{{ end }}
+  {{ if .IsHome }}
+  {{ $socials := slice }}{{ range .Site.Params.social }}{{ $socials = $socials | append .link }}{{ end }}
+  {{ $person := dict "@type" "Person" "@id" (printf "%s#person" .Permalink) "name" .Site.Params.author.author__name "jobTitle" "CTO & Software Engineer" "description" $description "url" .Permalink "image" $image "sameAs" $socials }}
+  {{ $profile := dict "@context" "https://schema.org" "@type" "ProfilePage" "@id" (printf "%s#profile" .Permalink) "url" .Permalink "name" $title "description" $description "inLanguage" .Site.LanguageCode "mainEntity" $person }}
+  <script type="application/ld+json">{{ $profile | jsonify | safeJS }}</script>
+  {{ end }}
+  {{ if and .IsPage (eq .Section "posts") }}
+  {{ $schema := dict "@context" "https://schema.org" "@type" "BlogPosting" "headline" .Title "description" $description "image" $image "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00") "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00") "mainEntityOfPage" .Permalink "author" (dict "@type" "Person" "name" .Site.Params.author.author__name "url" ("/about/" | absURL)) }}
+  <script type="application/ld+json">{{ $schema | jsonify | safeJS }}</script>
+  {{ end }}
+  {{ $font := resources.Get "fonts/silkscreen-latin.woff2" }}
+  <style>@font-face{font-family:Silkscreen;font-style:normal;font-weight:400;font-display:swap;src:url('{{ $font.RelPermalink }}') format('woff2')}</style>
+  <script>
+    try {
+      var theme = localStorage.getItem('theme');
+      var mode = {{ .Site.Params.color_scheme | default "auto" }};
+      document.documentElement.dataset.theme = mode === 'auto' ? (theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) : mode;
+    } catch (_) {}
+  </script>
+  {{ $css := resources.Get "sass/main.scss" | toCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+  {{ if not .Site.IsServer }}
+  <!-- Existing analytics integration; asynchronous and production only. -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TGC8RHRN');</script>
+  {{ end }}
 </head>

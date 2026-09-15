@@ -1,0 +1,22 @@
+{{ $module := resources.Get "js/game.js" | js.Build (dict "targetPath" "js/pixel-lab.js" "format" "esm" "target" "es2020" "minify" true) | fingerprint }}
+{{ $background := (resources.Get "pixel/laboratory-source.png").Resize "384x256 png NearestNeighbor" }}
+<section class="game-panel" aria-labelledby="lab-title" data-game data-module="{{ $module.RelPermalink }}" data-background="{{ $background.RelPermalink }}">
+  <h2 id="lab-title" class="game-accessible-title">Il laboratorio digitale di Luca Sciacca</h2>
+  <div class="game-screen">
+    <div class="game-viewport"><canvas width="384" height="256" tabindex="0" aria-label="Laboratorio esplorabile. Usa direttamente le frecce o WASD per camminare e Spazio per saltare." aria-describedby="game-help game-status">Esplora le passioni di Luca: sviluppo software, intelligenza artificiale, stampa 3D, videogiochi, elettronica e IoT.</canvas></div>
+    <div class="game-placeholder"><span aria-hidden="true">▦</span><strong>Il laboratorio sta aprendo.</strong><p>Quattro stanze. Quattro idee da attivare.</p></div>
+    <div class="game-overlay">
+      <ul class="game-inventory" aria-label="Laboratori esplorati"><li data-item="iot">01 <span>IoT</span></li><li data-item="printing">02 <span>Stampa 3D</span></li><li data-item="gaming">03 <span>Videogiochi</span></li><li data-item="code">04 <span>Codice &amp; IA</span></li></ul>
+      <p id="game-status" role="status" aria-live="polite" aria-atomic="true">Usa le frecce per esplorare. Spazio per saltare.</p>
+    </div>
+    <div class="game-touch"><div class="dpad" role="group" aria-label="Controlli di movimento"><button data-direction="up" aria-label="Muovi in alto">↑</button><button data-direction="left" aria-label="Muovi a sinistra">←</button><button data-direction="down" aria-label="Muovi in basso">↓</button><button data-direction="right" aria-label="Muovi a destra">→</button></div><button class="jump-button" data-jump aria-label="Salta">A<span>Salta</span></button></div>
+  </div>
+  <div class="game-console container">
+    <span data-room>ATRIO / LABORATORIO</span><button class="button" data-reset hidden>Ricomincia</button><button class="button" data-retry hidden>Riprova a caricare</button>
+    <p id="game-help">Frecce / WASD: cammina · Spazio: salta · Esc: chiudi il popup / pausa · Mouse o tocco sugli oggetti: scopri cosa sono.</p>
+    <details class="game-alternative game-object-guide"><summary>Gli oggetti del laboratorio</summary><label for="lab-object-list">Esamina un oggetto</label><select id="lab-object-list" data-object-list><option value="">Scegli un oggetto…</option></select><p data-object-description role="status">Scegli un oggetto per scoprire la sua storia.</p></details>
+    <details class="game-alternative"><summary>Esplora senza giocare</summary><p>Il mio laboratorio riunisce sviluppo e IA, stampa 3D, videogiochi ed elettronica connessa. Scopri le postazioni da qui oppure passa direttamente alla sezione Cosa faccio.</p><div>{{ range slice (dict "id" "iot" "label" "Elettronica & IoT") (dict "id" "printing" "label" "Stampa 3D") (dict "id" "gaming" "label" "Videogiochi") (dict "id" "code" "label" "Sviluppo & IA") }}<button class="button" data-collect="{{ .id }}" disabled>{{ .label }}</button>{{ end }}</div></details>
+    <a class="game-cta" href="#cosa-faccio">Dal laboratorio a quello che faccio ↓</a>
+    <noscript><p>Il gioco richiede JavaScript. Tutte le informazioni su di me sono disponibili qui sotto.</p></noscript>
+  </div>
+</section>
