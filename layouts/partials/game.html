@@ -14,8 +14,6 @@
   <div class="game-console container">
     <span data-room>ATRIO / LABORATORIO</span><button class="button" data-reset hidden>Ricomincia</button><button class="button" data-retry hidden>Riprova a caricare</button>
     <p id="game-help">Frecce / WASD: cammina · Spazio: salta · Esc: chiudi il popup / pausa · Mouse o tocco sugli oggetti: scopri cosa sono.</p>
-    <details class="game-alternative game-object-guide"><summary>Gli oggetti del laboratorio</summary><label for="lab-object-list">Esamina un oggetto</label><select id="lab-object-list" data-object-list><option value="">Scegli un oggetto…</option></select><p data-object-description role="status">Scegli un oggetto per scoprire la sua storia.</p></details>
-    <details class="game-alternative"><summary>Esplora senza giocare</summary><p>Il mio laboratorio riunisce sviluppo e IA, stampa 3D, videogiochi ed elettronica connessa. Scopri le postazioni da qui oppure passa direttamente alla sezione Cosa faccio.</p><div>{{ range slice (dict "id" "iot" "label" "Elettronica & IoT") (dict "id" "printing" "label" "Stampa 3D") (dict "id" "gaming" "label" "Videogiochi") (dict "id" "code" "label" "Sviluppo & IA") }}<button class="button" data-collect="{{ .id }}" disabled>{{ .label }}</button>{{ end }}</div></details>
     <a class="game-cta" href="#cosa-faccio">Dal laboratorio a quello che faccio ↓</a>
     <noscript><p>Il gioco richiede JavaScript. Tutte le informazioni su di me sono disponibili qui sotto.</p></noscript>
   </div>

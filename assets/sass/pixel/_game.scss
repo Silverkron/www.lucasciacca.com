@@ -10,16 +10,13 @@
 .game-viewport { position:relative; grid-row:1; min-height:0; overflow:hidden; display:grid; place-items:center; }
 .game-tooltip { position:absolute; z-index:5; width:290px; max-width:calc(100% - 16px); padding:12px 14px; border:3px solid #202020; outline:2px solid #eeeeee; outline-offset:-5px; background:#eeeeee; color:#202020; box-shadow:4px 4px 0 #202020; font:11px/1.7 var(--font-pixel); overflow-wrap:anywhere; }
 .game-tooltip[hidden] { display:none; }
-.game-object-guide label { display:block; margin-bottom:8px; }
-.game-object-guide select { max-width:100%; min-height:44px; }
-.game-object-guide [data-object-description] { max-width:60ch; }
 .game-screen canvas { display:block; max-width:none; image-rendering:crisp-edges; image-rendering:pixelated; outline-offset:-4px; }
-.game-overlay { grid-row:2; display:grid; grid-template-columns:minmax(320px,440px) 1fr; align-items:center; background:#eeeeee; color:#202020; border-top:1px solid #202020; }
+.game-overlay { grid-row:2; display:grid; grid-template-columns:minmax(320px,440px) minmax(0,max-content); justify-content:center; align-items:center; background:#eeeeee; color:#202020; border-top:1px solid #202020; }
 .game-inventory { display:grid; grid-template-columns:repeat(4,1fr); list-style:none; margin:0; padding:0; }
 .game-inventory li { display:flex; justify-content:center; align-items:center; gap:6px; padding:3px 4px; text-align:center; border-right:1px solid #606060; font:9px/1.5 var(--font-pixel); }
 .game-inventory li span { font:11px/1.5 var(--font-display); white-space:nowrap; }
 .game-inventory li[data-collected] { background:#202020; color:#eeeeee; }
-#game-status { padding:4px 16px; margin:0; font:12px/1.4 var(--font-display); min-height:0; }
+#game-status { padding:4px 16px; margin:0; font:12px/1.4 var(--font-display); min-height:0; text-align:center; }
 .game-placeholder { position:absolute; inset:0 0 60px; background:#202020; color:#eeeeee; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:24px; text-align:center; font-family:var(--font-pixel); }
 .game-placeholder > span { font-size:48px; margin-bottom:16px; }
 .game-placeholder strong { font-size:16px; }
@@ -31,11 +28,6 @@
 #game-help { flex:1; margin:0; font:12px/1.5 var(--font-display); color:var(--muted); }
 .game-cta { font-size:12px; font-weight:700; }
 .game-panel[data-complete] .game-cta { outline:2px solid var(--border); outline-offset:5px; }
-.game-alternative { position:relative; margin:0; padding:0; border:0; font-size:12px; }
-.game-alternative summary { min-height:44px; line-height:44px; }
-.game-alternative[open] { width:100%; order:3; padding:14px; border:1px solid var(--border); }
-.game-alternative > div { display:flex; flex-wrap:wrap; gap:10px; }
-.game-alternative .button { font-size:12px; min-height:44px; }
 .game-touch { display:none; }
 @media (max-width:950px) {
   .hero__copy { gap:32px; }

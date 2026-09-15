@@ -65,7 +65,8 @@ navigation or routes without a new publication request.
 - assets/pixel/characters/technician.js: original four-direction sprite atlas.
 - assets/pixel/props.js: original Biscotto/MK3 pixel sprites and cat patrol.
 - assets/pixel/objects.js: native-coordinate object descriptions and hit testing.
-- assets/js/inspection.js: hover/touch popup and keyboard object catalogue.
+- assets/js/inspection.js: in-game hover/touch popups. The external object
+  catalogue and select were removed at the user's request; do not restore them.
 - assets/fonts/: font assets and license.
 - static/: copied assets, images, robots and third-party licenses.
 - scripts/verify-site.mjs: generated-site link and metadata checks.
@@ -123,8 +124,9 @@ menus, buttons or form fields. Space acts only when the canvas is focused.
 Escape pauses; directional keys resume. D-pad events must release on pointer
 cancel/lost capture. Stop the engine outside the viewport, on tab/window blur,
 and when paused. Reduced motion disables ambient animation and runs frames only
-for explicit movement or state changes. The game must remain optional, with
-equivalent HTML terminal controls and ordinary links to all content.
+for explicit movement or state changes. The user removed both external object
+and terminal controls ("Esplora senza giocare"). Do not restore them. The game
+remains optional: professional content and ordinary navigation remain in HTML.
 
 ## Commands
 
