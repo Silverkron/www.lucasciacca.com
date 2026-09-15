@@ -80,7 +80,6 @@ export async function mount(root) {
     const t=TERMINALS.find(t=>t.id===id);if(!t)return;
     state.collected.add(id);
     const item=root.querySelector('[data-item="'+id+'"]');item.dataset.collected='';item.setAttribute('aria-label',t.label+': attivo');
-    const button=root.querySelector('[data-collect="'+id+'"]');button.disabled=true;button.textContent=t.label+' ✓';
     status.textContent=t.message+' '+state.collected.size+'/4.';reset.hidden=false;
     if(state.collected.size===4){root.dataset.complete='';status.textContent='4/4 · Hai esplorato le mie passioni. Ora scopri cosa faccio, qui sotto.';}
     markers.flagDirty();schedule();
@@ -128,7 +127,6 @@ export async function mount(root) {
   reset.addEventListener('click',()=>{
     pause(false);state=makeState();lastPose='';lastRelic='';clock=0;manualPause=false;playing=true;delete root.dataset.complete;
     root.querySelectorAll('[data-item]').forEach(el=>{delete el.dataset.collected;el.removeAttribute('aria-label');});
-    root.querySelectorAll('[data-collect]').forEach(el=>{el.disabled=false;el.textContent=TERMINALS.find(t=>t.id===el.dataset.collect).label;});
     status.textContent='Una nuova esplorazione. Usa le frecce per muoverti.';
     markers.flagDirty();props.flagDirty();updateInspection();paint();schedule();
   });
@@ -145,7 +143,6 @@ export async function mount(root) {
     });
   });
   root.querySelector('[data-jump]').addEventListener('click',doJump);
-  root.querySelectorAll('[data-collect]').forEach(button=>{button.disabled=false;button.addEventListener('click',()=>collect(button.dataset.collect));});
   const resumeAmbient=()=>{if(!manualPause&&visible&&!document.hidden){playing=true;schedule();}};
   document.addEventListener('visibilitychange',()=>{if(document.hidden)pause(false);else resumeAmbient();});
   window.addEventListener('blur',()=>pause(false));

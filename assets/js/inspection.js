@@ -1,13 +1,9 @@
-import { inspectables,objectAt } from '../pixel/objects.js';
+import { objectAt } from '../pixel/objects.js';
 
 export function mountInspection(root,snapshot){
   const canvas=root.querySelector('canvas'),stage=root.querySelector('.game-viewport');
   const tooltip=document.createElement('div');tooltip.className='game-tooltip';tooltip.id='object-tooltip';
   tooltip.setAttribute('role','tooltip');tooltip.hidden=true;stage.append(tooltip);
-  const select=root.querySelector('[data-object-list]'),description=root.querySelector('[data-object-description]');
-  for(const item of inspectables(0,false,snapshot().state)){
-    const option=document.createElement('option');option.value=item.id;option.textContent=item.text.split(':')[0];select.append(option);
-  }
   let pointer=null,overTooltip=false,dismissed=false,lastID='';
   const hide=()=>{tooltip.hidden=true;lastID='';canvas.style.cursor='';canvas.removeAttribute('aria-details');};
   function update(){
@@ -40,9 +36,5 @@ export function mountInspection(root,snapshot){
   window.addEventListener('scroll',()=>{pointer=null;hide();},{passive:true});
   window.addEventListener('resize',()=>{pointer=null;hide();});
   window.addEventListener('blur',()=>{pointer=null;hide();});
-  select.addEventListener('change',()=>{
-    const {clock,reduced,state}=snapshot();
-    description.textContent=inspectables(clock,reduced,state).find(item=>item.id===select.value)?.text||'Scegli un oggetto per scoprire la sua storia.';
-  });
   return update;
 }

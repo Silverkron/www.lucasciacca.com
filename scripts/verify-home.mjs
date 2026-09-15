@@ -6,6 +6,8 @@ const root = resolve(process.argv[2] || 'public');
 const walk = dir => readdirSync(dir, { withFileTypes:true }).flatMap(e => e.isDirectory() ? walk(join(dir,e.name)) : [join(dir,e.name)]);
 assert.deepEqual(walk(root).filter(f=>f.endsWith('.html')).map(f=>relative(root,f)).sort(), ['404.html','index.html']);
 const html = readFileSync(join(root,'index.html'),'utf8');
+assert(!/data-object-list|data-object-description|game-object-guide/.test(html),'Objects are inspected only inside the game');
+assert(!/Esplora senza giocare|data-collect=|game-alternative/.test(html),'No external terminal controls');
 const attr = (tag, key) => tag.match(new RegExp(`\\b${key}=(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`))?.slice(1).find(v=>v!==undefined);
 const ids = [...html.matchAll(/<[^!][^>]*>/g)].map(m=>attr(m[0],'id')).filter(Boolean);
 assert.equal(ids.length,new Set(ids).size,'IDs must be unique, including SVG defs.');
