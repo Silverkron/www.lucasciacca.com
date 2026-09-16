@@ -29,6 +29,7 @@
 .game-cta { font-size:12px; font-weight:700; }
 .game-panel[data-complete] .game-cta { outline:2px solid var(--border); outline-offset:5px; }
 .game-touch { display:none; }
+.game-touch, .game-touch * { -webkit-user-select:none; user-select:none; -webkit-touch-callout:none; }
 @media (max-width:950px) {
   .hero__copy { gap:32px; }
 }

@@ -130,6 +130,7 @@ export async function mount(root) {
     status.textContent='Una nuova esplorazione. Usa le frecce per muoverti.';
     markers.flagDirty();props.flagDirty();updateInspection();paint();schedule();
   });
+  root.querySelector('.game-touch').addEventListener('contextmenu',event=>event.preventDefault());
   root.querySelectorAll('[data-direction]').forEach(button=>{
     const key='touch-'+button.dataset.direction;
     button.addEventListener('pointerdown',event=>{
